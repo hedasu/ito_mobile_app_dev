@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "35991726366",
+    "project_id": "uyg1ogrenci-yonetim-2026-f136f",
+    "storage_bucket": "uyg1ogrenci-yonetim-2026-f136f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:35991726366:android:e97fdb5498c32c1ca4410f",
+        "android_client_info": {
+          "package_name": "com.example.uyg1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_j85zbOaljqBWQNXS8pN6BVot6PVFs7M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:35991726366:android:fb28887ea0aaba25a4410f",
+        "android_client_info": {
+          "package_name": "com.example.zelal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_j85zbOaljqBWQNXS8pN6BVot6PVFs7M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyD17k0hpb-AtYskiJhK9LgqXIF49Lr4r0M</string>
+	<key>GCM_SENDER_ID</key>
+	<string>35991726366</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.zelal</string>
+	<key>PROJECT_ID</key>
+	<string>uyg1ogrenci-yonetim-2026-f136f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>uyg1ogrenci-yonetim-2026-f136f.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:35991726366:ios:e5dc50f5e66acdbca4410f</string>
+</dict>
+</plist>
