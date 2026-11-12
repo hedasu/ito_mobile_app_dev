@@ -1,0 +1,272 @@
+<!DOCTYPE html><html class="dark" lang="tr"><head>
+<meta charset="utf-8">
+<meta content="width=390, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Pairly - Oyun Sonucu</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts: Manrope -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-bright": "#343b37",
+            "on-background": "#dee4df",
+            "inverse-primary": "#4f6352",
+            "on-secondary-fixed": "#131e17",
+            "secondary-container": "#404c43",
+            "inverse-surface": "#dee4df",
+            "tertiary-fixed-dim": "#bccabe",
+            "inverse-on-surface": "#2c322e",
+            "outline": "#8d928b",
+            "on-tertiary": "#27332b",
+            "outline-variant": "#434842",
+            "surface-container-high": "#252b28",
+            "primary-fixed": "#d2e8d2",
+            "on-surface": "#dee4df",
+            "on-primary-fixed": "#0d1f12",
+            "surface-container-highest": "#303633",
+            "primary": "#c0d7c1",
+            "tertiary": "#c6d5c9",
+            "background": "#0f1512",
+            "surface-tint": "#b6ccb7",
+            "on-tertiary-fixed": "#121e17",
+            "on-error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#384b3b",
+            "on-secondary": "#27332b",
+            "on-surface-variant": "#c3c8c0",
+            "on-error": "#690005",
+            "surface-container": "#1b211e",
+            "surface-container-low": "#171d1a",
+            "error-container": "#93000a",
+            "on-primary-container": "#384b3b",
+            "primary-fixed-dim": "#b6ccb7",
+            "primary-container": "#a5bba6",
+            "on-primary": "#223526",
+            "tertiary-container": "#abb9ad",
+            "surface-dim": "#0f1512",
+            "on-tertiary-fixed-variant": "#3d4a41",
+            "surface-container-lowest": "#0a0f0d",
+            "surface-variant": "#303633",
+            "tertiary-fixed": "#d8e6da",
+            "error": "#ffb4ab",
+            "secondary": "#bdcabe",
+            "on-secondary-container": "#afbcb0",
+            "on-tertiary-container": "#3d4a41",
+            "on-secondary-fixed-variant": "#3e4a41",
+            "secondary-fixed-dim": "#bdcabe",
+            "surface": "#0f1512",
+            "secondary-fixed": "#d9e6da"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "gutter-desktop": "1.5rem",
+            "margin-tablet": "2rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "margin": "1rem",
+            "space-xl": "2.5rem",
+            "margin-desktop": "3rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Manrope"],
+            "headline-xl-mobile": ["Manrope"],
+            "headline-lg": ["Manrope"],
+            "label-md": ["Manrope"],
+            "body-sm": ["Manrope"],
+            "counter-display": ["Manrope"],
+            "headline-md": ["Manrope"],
+            "label-lg": ["Manrope"],
+            "body-md": ["Manrope"],
+            "headline-xl": ["Manrope"]
+          },
+          "fontSize": {
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "headline-xl-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "500" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "counter-display": ["36px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "300" }],
+            "headline-md": ["22px", { "lineHeight": "30px", "letterSpacing": "-0.005em", "fontWeight": "500" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "body-md": ["15px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      background-color: #171D1A;
+      color: #F1F4EF;
+      font-family: 'Manrope', sans-serif;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      margin: 0;
+      padding: 0;
+    }
+
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .sage-halo {
+      box-shadow: 0 0 32px 4px rgba(165, 187, 166, 0.16);
+    }
+
+    .card-shadow-lifted {
+      box-shadow: 0 16px 32px -8px rgba(10, 15, 13, 0.55);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-[#171D1A] min-h-screen flex items-center justify-center p-0 overflow-x-hidden antialiased">
+<!-- Mobile Viewport Container 390x844 px -->
+<main class="w-[390px] h-[844px] max-w-[390px] max-h-[844px] bg-[#171D1A] flex flex-col justify-between px-6 pt-3 pb-8 relative overflow-hidden select-none">
+<!-- Top Bar: Status Bar & Brand Header -->
+<header class="w-full flex flex-col gap-2 z-10 shrink-0">
+<!-- Status Bar Mockup -->
+<div class="w-full flex items-center justify-between text-[#F1F4EF] text-[13px] font-semibold tracking-tight px-1 py-1 opacity-90">
+<span>09:41</span>
+<div class="flex items-center gap-1.5 text-[15px]">
+<span class="material-symbols-outlined !text-[15px]">signal_cellular_alt</span>
+<span class="material-symbols-outlined !text-[15px]">wifi</span>
+<span class="material-symbols-outlined !text-[17px] rotate-90">battery_full</span>
+</div>
+</div>
+<!-- App Header Bar (No X button, focused clean brand anchor) -->
+<div class="w-full h-10 flex items-center justify-center relative">
+<div class="flex items-center gap-2">
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQfeliedDZE4R5hX1PGteixheE-x_58CSM2NrCvjNW0ZYoLRGapgLxUit40_QZ62E-9Vi5Y6QcyTZ9g3yLfp07BxZOcEEcmAIUUyegcKExCYQ0uy4x_JRFuzLFH17THcASh9kbasrk6PPaeM5pGg9ppPLB9sd46VM0oV9yowZ82jRgOfBv7TdYLNiHGirw9H5qLfDCJcfOrsYcsvnbLgZ9B1_U4hFvfABB263qUlqrXB0W-nfZljQwMA" alt="Pairly Logo" class="w-7 h-7 object-contain inline-block align-middle mr-1.5">
+<span class="font-semibold text-lg text-[#F1F4EF] tracking-tight">Pairly</span>
+</div>
+</div>
+</header>
+<!-- Center Content: Card Art, Headlines & Badges -->
+<section class="flex flex-col items-center justify-center flex-grow py-1 z-10">
+<!-- Minimalist Matched Card Pair Illustration -->
+<div class="relative w-44 h-36 flex items-center justify-center mb-5">
+<!-- Ambient Sage Glow -->
+<div class="absolute w-32 h-32 rounded-full bg-[#A5BBA6]/10 blur-xl pointer-events-none"></div>
+<!-- Left Matched Card (Tilted Counter-Clockwise) -->
+<div class="absolute w-24 h-32 bg-[#252E28] rounded-2xl border border-[#3B483F] flex flex-col items-center justify-between p-3.5 -rotate-8 -translate-x-6 card-shadow-lifted transition-transform duration-300">
+<div class="w-full flex justify-between items-center text-[#8B9A8F]">
+<span class="material-symbols-outlined !text-[13px] opacity-70">eco</span>
+<span class="text-[10px] font-semibold tracking-wider text-[#A5BBA6]/80">01</span>
+</div>
+<div class="w-12 h-12 rounded-xl bg-[#1F2621] border border-[#3B483F]/70 flex items-center justify-center sage-halo">
+<span class="material-symbols-outlined text-[#A5BBA6] !text-[26px]" style="font-variation-settings: 'FILL' 1;">local_florist</span>
+</div>
+<div class="w-full flex justify-center">
+<span class="w-4 h-0.5 rounded-full bg-[#3B483F]"></span>
+</div>
+</div>
+<!-- Right Matched Card (Tilted Clockwise & Overlapping) -->
+<div class="absolute w-24 h-32 bg-[#252E28] rounded-2xl border-[1.5px] border-[#A5BBA6] flex flex-col items-center justify-between p-3.5 rotate-8 translate-x-6 card-shadow-lifted sage-halo z-10 transition-transform duration-300">
+<div class="w-full flex justify-between items-center text-[#8B9A8F]">
+<span class="material-symbols-outlined !text-[13px] text-[#A5BBA6]">eco</span>
+<span class="text-[10px] font-semibold tracking-wider text-[#A5BBA6]">01</span>
+</div>
+<div class="w-12 h-12 rounded-xl bg-[#1F2621] border border-[#A5BBA6]/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#A5BBA6] !text-[26px]" style="font-variation-settings: 'FILL' 1;">local_florist</span>
+</div>
+<div class="w-full flex justify-center">
+<span class="w-4 h-0.5 rounded-full bg-[#A5BBA6]/70"></span>
+</div>
+</div>
+</div>
+<!-- Celebration Headlines -->
+<div class="text-center space-y-1 mb-4">
+<h1 class="text-3xl font-bold tracking-tight text-[#F1F4EF]">Tebrikler!</h1>
+<p class="text-sm font-normal text-[#8B9A8F]">Tüm kartları eşleştirdin.</p>
+</div>
+<!-- Level & Record Badges -->
+<div class="flex items-center justify-center gap-2 mb-4 transition-all duration-300" id="badge-container"><span class="px-3.5 py-1.5 rounded-full text-xs font-medium text-[#F1F4EF] bg-[#252E28] border border-[#3B483F]">Orta (4x4)</span><div class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold text-[#A5BBA6] bg-[#A5BBA6]/15 border border-[#A5BBA6] transition-all duration-200" id="record-badge"><span class="material-symbols-outlined !text-[15px]" style="font-variation-settings: 'FILL' 1;">emoji_events</span><span>Yeni En İyi Süre!</span></div></div>
+<!-- Stats Summary Card -->
+<div class="w-full bg-[#252E28] border border-[#3B483F] rounded-2xl p-4 flex flex-col gap-3.5">
+<!-- 3 Metrics Grid -->
+<div class="grid grid-cols-3 divide-x divide-[#3B483F]">
+<!-- Metric 1: Süre -->
+<div class="flex flex-col items-center justify-center px-2">
+<div class="flex items-center gap-1 text-[#8B9A8F] mb-1">
+<span class="material-symbols-outlined !text-[15px]">schedule</span>
+<span class="text-xs font-medium">Süre</span>
+</div>
+<span class="text-xl font-bold text-[#F1F4EF] tracking-tight">01:28</span>
+</div>
+<!-- Metric 2: Hamle -->
+<div class="flex flex-col items-center justify-center px-2">
+<div class="flex items-center gap-1 text-[#8B9A8F] mb-1">
+<span class="material-symbols-outlined !text-[15px]">touch_app</span>
+<span class="text-xs font-medium">Hamle</span>
+</div>
+<span class="text-xl font-bold text-[#F1F4EF] tracking-tight">18</span>
+</div>
+<!-- Metric 3: Eşleşme -->
+<div class="flex flex-col items-center justify-center px-2">
+<div class="flex items-center gap-1 text-[#8B9A8F] mb-1">
+<span class="material-symbols-outlined !text-[15px]">check_circle</span>
+<span class="text-xs font-medium">Eşleşme</span>
+</div>
+<span class="text-xl font-bold text-[#F1F4EF] tracking-tight">8/8</span>
+</div>
+</div>
+<!-- Divider Line -->
+<div class="w-full h-px bg-[#3B483F]" id="record-divider"></div>
+<!-- Bottom Row: Personal Best Highlight -->
+<div class="flex items-center justify-center gap-2 text-sm font-medium text-[#A5BBA6] transition-all duration-200" id="record-detail"><span class="material-symbols-outlined !text-[20px] text-[#A5BBA6] shrink-0" style="font-variation-settings: 'FILL' 1;">verified</span><span class="text-[#F1F4EF] text-[15px] font-medium tracking-tight">Önceki rekorundan <span class="text-[#A5BBA6] font-bold">14 saniye</span> daha hızlı</span></div>
+</div>
+</section>
+<!-- Bottom Actions: Primary & Secondary Buttons + Home Indicator -->
+<footer class="w-full flex flex-col gap-3 pt-2 shrink-0 z-10">
+<!-- Primary Action: Tekrar Oyna -->
+<button class="w-full h-14 bg-[#A5BBA6] hover:bg-[#b6ccb7] active:scale-[0.98] transition-all duration-150 rounded-2xl flex items-center justify-center gap-2.5 text-[#171D1A] font-semibold text-base shadow-sm">
+<span class="material-symbols-outlined !text-[22px]">replay</span>
+<span>Tekrar Oyna</span>
+</button>
+<!-- Secondary Action: Ana Sayfa -->
+<button class="w-full h-14 bg-[#252E28] hover:bg-[#2b362f] active:scale-[0.98] transition-all duration-150 rounded-2xl border border-[#3B483F] flex items-center justify-center gap-2.5 text-[#F1F4EF] font-medium text-base">
+<span class="material-symbols-outlined !text-[20px] text-[#A0ADA4]">home</span>
+<span>Ana Sayfa</span>
+</button>
+<!-- Safe Area Home Bar Mockup -->
+<div class="w-full flex justify-center pt-2">
+<div class="w-32 h-1 rounded-full bg-[#8B9A8F]/30"></div>
+</div>
+</footer>
+</main>
+<script>function setMode(mode){const badge=document.getElementById('record-badge');const divider=document.getElementById('record-divider');const detail=document.getElementById('record-detail');const tabRecord=document.getElementById('tab-record');const tabNormal=document.getElementById('tab-normal');if(mode==='record'){if(badge)badge.style.display='flex';if(divider)divider.style.display='block';if(detail)detail.style.display='flex';if(tabRecord){tabRecord.className='px-3 py-1 rounded-full font-semibold transition-all duration-200 bg-[#A5BBA6] text-[#171D1A] flex items-center gap-1 shadow-sm';}if(tabNormal){tabNormal.className='px-3 py-1 rounded-full font-medium transition-all duration-200 text-[#8B9A8F] hover:text-[#F1F4EF] flex items-center gap-1';}}else{if(badge)badge.style.display='none';if(divider)divider.style.display='none';if(detail)detail.style.display='none';if(tabRecord){tabRecord.className='px-3 py-1 rounded-full font-medium transition-all duration-200 text-[#8B9A8F] hover:text-[#F1F4EF] flex items-center gap-1';}if(tabNormal){tabNormal.className='px-3 py-1 rounded-full font-semibold transition-all duration-200 bg-[#A5BBA6] text-[#171D1A] flex items-center gap-1 shadow-sm';}}}</script>
+
+</body></html>

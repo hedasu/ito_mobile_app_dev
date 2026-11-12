@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Pairly - Oyun Alanı (Dark Mode)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    body {
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #171D1A;
+      color: #F1F4EF;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#171D1A] m-0 p-0 text-[#F1F4EF]">
+<!-- Mobile Canvas Frame: 390x844 px -->
+<div class="relative w-full max-w-[390px] mx-auto min-h-screen bg-[#171D1A] flex flex-col justify-between overflow-hidden">
+<!-- Top System Status Bar -->
+<div class="h-11 px-6 flex justify-between items-center text-xs font-semibold text-[#F1F4EF]/75 select-none pt-1">
+<span class="tracking-tight text-sm font-bold text-[#F1F4EF]">09:41</span>
+<div class="flex items-center space-x-1.5">
+<!-- Cellular -->
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 24 24">
+<path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 18.25C2.89 16.48 2 14.34 2 12 2 6.48 6.48 2 12 2s10 4.48 10 10c0 2.34-.89 4.48-2.35 6.25l-.62-.64C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9zm0 4c-2.76 0-5 2.24-5 5 0 1.29.49 2.47 1.3 3.36l.66-.66C8.36 14.07 8 13.08 8 12c0-2.21 1.79-4 4-4s4 1.79 4 4c0 1.08-.36 2.07-.96 2.7l.66.66C16.51 14.47 17 13.29 17 12c0-2.76-2.24-5-5-5zm0 4c-.55 0-1 .45-1 1 0 .34.17.64.44.82l.56.56.56-.56c.27-.18.44-.48.44-.82 0-.55-.45-1-1-1z"></path>
+</svg>
+<!-- Wifi -->
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 24 24">
+<path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98A16.88 16.88 0 0012 4zm0 2.5a14.28 14.28 0 0110.15 4.19L12 19.33 1.85 10.69A14.28 14.28 0 0112 6.5z"></path>
+</svg>
+<!-- Battery -->
+<div class="w-5 h-2.5 border border-[#F1F4EF]/75 rounded-sm p-0.5 flex items-center">
+<div class="h-full bg-[#A5BBA6] rounded-2xs w-4"></div>
+</div>
+</div>
+</div>
+<!-- Main Game Content -->
+<div class="flex-1 px-4 pb-2 flex flex-col justify-between select-none">
+<!-- Top Navigation & Level Selector -->
+<div>
+<div class="flex items-center justify-between mb-3.5 pt-1">
+<!-- Back button -->
+<button aria-label="Geri" class="w-10 h-10 rounded-full bg-[#252E28] border border-[#3B483F] flex items-center justify-center text-[#F1F4EF] hover:border-[#A5BBA6] active:scale-95 transition-all" id="btnBack">
+<svg class="w-5 h-5 stroke-current fill-none stroke-2" viewbox="0 0 24 24">
+<path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Level indicator chip -->
+<div class="h-9 px-3.5 rounded-full bg-[#252E28] border border-[#3B483F] flex items-center space-x-2 text-xs font-medium text-[#F1F4EF]">
+<span class="w-2 h-2 rounded-full bg-[#A5BBA6]"></span>
+<span>Orta Seviye (4x4)</span>
+<svg class="w-3.5 h-3.5 text-[#A5BBA6]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M7 16V4M7 4L3 8M7 4L11 8M17 8v12M17 20l4-4M17 20l-4-4"></path>
+</svg>
+</div>
+<!-- Top Right Controls: Settings (Ses & Titreşim) & Restart -->
+<div class="flex items-center space-x-2">
+<!-- Unified Settings Icon -->
+<button aria-label="Ayarlar" class="w-10 h-10 rounded-full bg-[#252E28] border border-[#3B483F] flex items-center justify-center text-[#F1F4EF] hover:border-[#A5BBA6] active:scale-95 transition-all relative" id="btnSettings">
+<svg class="w-5 h-5 fill-none stroke-current stroke-2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="3"></circle>
+<path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Restart button -->
+<button aria-label="Yeniden Başlat" class="w-10 h-10 rounded-full bg-[#252E28] border border-[#3B483F] flex items-center justify-center text-[#F1F4EF] hover:border-[#A5BBA6] active:scale-95 transition-all" id="btnRestart">
+<svg class="w-5 h-5 fill-none stroke-current stroke-2" viewbox="0 0 24 24">
+<path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</div>
+<!-- Metric Scoreboard (Süre, Hamle, Eşleşme) -->
+<div class="grid grid-cols-3 gap-2.5 mb-2.5">
+<!-- Süre -->
+<div class="bg-[#252E28] border border-[#3B483F] rounded-2xl py-2 px-2 flex flex-col items-center justify-center text-center">
+<div class="flex items-center space-x-1 text-[#A5BBA6] text-[11px] font-medium mb-0.5">
+<svg class="w-3.5 h-3.5 stroke-current fill-none stroke-2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+<span>Süre</span>
+</div>
+<span class="text-[17px] font-bold text-[#F1F4EF] tracking-tight" id="txtTimer">01:31</span>
+</div>
+<!-- Hamle -->
+<div class="bg-[#252E28] border border-[#3B483F] rounded-2xl py-2 px-2 flex flex-col items-center justify-center text-center">
+<div class="flex items-center space-x-1 text-[#A5BBA6] text-[11px] font-medium mb-0.5">
+<svg class="w-3.5 h-3.5 stroke-current fill-none stroke-2" viewbox="0 0 24 24">
+<path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Hamle</span>
+</div>
+<span class="text-[17px] font-bold text-[#F1F4EF] tracking-tight" id="txtMoves">14</span>
+</div>
+<!-- Eşleşme -->
+<div class="bg-[#252E28] border border-[#3B483F] rounded-2xl py-2 px-2 flex flex-col items-center justify-center text-center">
+<div class="flex items-center space-x-1 text-[#A5BBA6] text-[11px] font-medium mb-0.5">
+<svg class="w-3.5 h-3.5 stroke-current fill-none stroke-2" viewbox="0 0 24 24">
+<rect height="7" width="7" x="3" y="3"></rect>
+<rect height="7" width="7" x="14" y="3"></rect>
+<rect height="7" width="7" x="14" y="14"></rect>
+<rect height="7" width="7" x="3" y="14"></rect>
+</svg>
+<span>Eşleşme</span>
+</div>
+<span class="text-[17px] font-bold text-[#F1F4EF] tracking-tight" id="txtMatches">5 / 8</span>
+</div>
+</div>
+<!-- Progress Bar Section -->
+<div class="px-1 mb-2">
+<div class="flex justify-between items-center text-[11px] font-medium text-[#A5BBA6] mb-1">
+<span>Tamamlanma Oranı</span>
+<span class="font-semibold text-[#F1F4EF]">%62.5</span>
+</div>
+<div class="w-full h-1.5 bg-[#252E28] rounded-full overflow-hidden border border-[#3B483F]/60">
+<div class="h-full bg-[#A5BBA6] rounded-full transition-all duration-300" style="width: 62.5%"></div>
+</div>
+</div>
+</div>
+<!-- 4x4 Card Grid Area (4 sütun x 4 satır = 16 kart, 78px x 92px) -->
+<div class="my-auto py-2" style="margin: 0 auto; display: grid; grid-template-columns: repeat(4, 78px); gap: 8px; justify-content: center;">
+<!-- SATIR 1 -->
+<!-- KART 1: Kapalı kart (? ikonu) -->
+<div class="w-[78px] h-[92px] rounded-2xl bg-[#252E28] border border-[#3B483F] flex items-center justify-center cursor-pointer hover:border-[#A5BBA6]/60 transition-colors">
+<div class="w-8 h-8 rounded-full border border-dashed border-[#A5BBA6]/50 flex items-center justify-center text-[#A5BBA6] text-xs font-bold bg-[#171D1A]/50">?</div>
+</div>
+<!-- KART 2: Kapalı kart (? ikonu) -->
+<div class="w-[78px] h-[92px] rounded-2xl bg-[#252E28] border border-[#3B483F] flex items-center justify-center cursor-pointer hover:border-[#A5BBA6]/60 transition-colors">
+<div class="w-8 h-8 rounded-full border border-dashed border-[#A5BBA6]/50 flex items-center justify-center text-[#A5BBA6] text-xs font-bold bg-[#171D1A]/50">?</div>
+</div>
+<!-- KART 3: Eşleşmiş açık kart (limon/zeytin sembolü) -->
+<div class="w-[78px] h-[92px] rounded-2xl bg-[#1E2E24] border-2 border-[#A5BBA6] flex flex-col items-center justify-center relative cursor-pointer shadow-sm">
+<div class="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-[#A5BBA6] text-[#171D1A] flex items-center justify-center">
+<svg class="w-2.5 h-2.5 stroke-current fill-none stroke-[3]" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</div>
+<svg class="w-7 h-7 text-[#FFD166]" fill="currentColor" viewbox="0 0 24 24">
+<path d="M19.5 4.5c-2.8-2.8-7.5-2.2-11.2 1.5s-4.3 8.4-1.5 11.2 7.5 2.2 11.2-1.5 4.3-8.4 1.5-11.2zm-2.1 9.8c-2.9 2.9-6.4 3.4-8.5 1.3s-1.6-5.6 1.3-8.5 6.4-3.4 8.5-1.3 1.6 5.6-1.3 8.5z"></path>
+<path d="M20.5 3.5l1.5-1.5M3.5 20.5l-1.5 1.5" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path>
+</svg>
+</div>
+<!-- KART 4: Eşleşmiş açık kart (kahve fincanı sembolü) -->
+<div class="w-[78px] h-[92px] rounded-2xl bg-[#1E2E24] border-2 border-[#A5BBA6] flex flex-col items-center justify-center relative cursor-pointer shadow-sm">
+<div class="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-[#A5BBA6] text-[#171D1A] flex items-center justify-center">
+<svg class="w-2.5 h-2.5 stroke-current fill-none stroke-[3]" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</div>
+<svg class="w-7 h-7 text-[#D4A373]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+<path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" fill="#3B2F2F" fill-opacity="0.3"></path>
+<line stroke="#A5BBA6" x1="6" x2="6" y1="1" y2="4"></line>
+<line stroke="#A5BBA6" x1="10" x2="10" y1="1" y2="4"></line>
+<line stroke="#A5BBA6" x1="14" x2="14" y1="1" y2="4"></line>
+</svg>
+</div>
+<!-- SATIR 2 -->
+<!-- KART 5: Kapalı kart (? ikonu) -->
+<div class="w-[78px] h-[92px] rounded-2xl bg-[#252E28] border border-[#3B483F] flex items-center justify-center cursor-pointer hover:border-[#A5BBA6]/60 transition-colors">
+<div class="w-8 h-8 rounded-full border border-dashed border-[#A5BBA6]/50 flex items-center justify-center text-[#A5BBA6] text-xs font-bold bg-[#171D1A]/50">?</div>
+</div>
+<!-- KART 6: Eşleşmiş açık kart (bitki/yaprak sembolü) -->
+<div class="w-[78px] h-[92px] rounded-2xl bg-[#1E2E24] border-2 border-[#A5BBA6] flex flex-col items-center justify-center relative cursor-pointer shadow-sm">
+<div class="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-[#A5BBA6] text-[#171D1A] flex items-center justify-center">
+<svg class="w-2.5 h-2.5 stroke-current fill-none stroke-[3]" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</div>
+<svg class="w-7 h-7 text-[#A5BBA6]" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 2C7 6 5 12 12 22C12 16 17 12 12 2Z" fill-opacity="0.85"></path>
+<path d="M12 22C10 18 5 16 3 10C5 12 9 14 12 22Z" fill-opacity="0.95"></path>
+<path d="M12 22C14 18 19 16 21 10C19 12 15 14 12 22Z" fill-opacity="0.95"></path>
+</svg>
+</div>
+<!-- KART 7: Eşleşmiş açık kart (kiraz çiçeği sembolü) -->
+<div class="w-[78px] h-[92px] rounded-2xl bg-[#1E2E24] border-2 border-[#A5BBA6] flex flex-col items-center justify-center relative cursor-pointer shadow-sm">
+<div class="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-[#A5BBA6] text-[#171D1A] flex items-center justify-center">
+<svg class="w-2.5 h-2.5 stroke-current fill-none stroke-[3]" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</div>
+<svg class="w-7 h-7 text-[#FF9EAA]" fill="currentColor" viewbox="0 0 24 24">
+<circle cx="12" cy="12" fill="#FFD166" r="2.5"></circle>
+<path d="M12 2C13.5 4.5 15.5 5 17 4.5C18.5 4 19 6 18 7.5C17 9 17.5 11 19.5 11.5C21.5 12 21 14 19.5 14.5C18 15 17 17 18 18.5C19 20 17 21 15.5 20C14 19 12.5 20.5 12 22C11.5 20.5 10 19 8.5 20C7 21 5 20 6 18.5C7 17 6 15 4.5 14.5C3 14 2.5 12 4.5 11.5C6.5 11 7 9 6 7.5C5 6 5.5 4 7 4.5C8.5 5 10.5 4.5 12 2Z" opacity="0.9"></path>
+</svg>
+</div>
+<!-- KART 8: Kapalı kart (? ikonu) -->
+<div class="w-[78px] h-[92px] rounded-2xl bg-[#252E28] border border-[#3B483F] flex items-center justify-center cursor-pointer hover:border-[#A5BBA6]/60 transition-colors">
+<div class="w-8 h-8 rounded-full border border-dashed border-[#A5BBA6]/50 flex items-center justify-center text-[#A5BBA6] text-xs font-bold bg-[#171D1A]/50">?</div>
+</div>
+<!-- SATIR 3 -->
+<!-- KART 9: Eşleşmiş açık kart (avokado sembolü) -->
+<div class="w-[78px] h-[92px] rounded-2xl bg-[#1E2E24] border-2 border-[#A5BBA6] flex flex-col items-center justify-center relative cursor-pointer shadow-sm">
+<div class="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-[#A5BBA6] text-[#171D1A] flex items-center justify-center">
+<svg class="w-2.5 h-2.5 stroke-current fill-none stroke-[3]" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</div>
+<svg class="w-7 h-7 text-[#A7C957]" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 2C8 2 6 7 6 13c0 4.4 2.7 8 6 8s6-3.6 6-8c0-6-2-11-6-11z" fill="#4B6043"></path>
+<path d="M12 4C9 4 7.5 8 7.5 13c0 3.6 2 6.5 4.5 6.5s4.5-2.9 4.5-6.5c0-5-1.5-9-4.5-9z" fill="#DDE5B6"></path>
+<circle cx="12" cy="14" fill="#6B705C" r="3"></circle>
+</svg>
+</div>
+<!-- KART 10: Kapalı kart (? ikonu) -->
+<div class="w-[78px] h-[92px] rounded-2xl bg-[#252E28] border border-[#3B483F] flex items-center justify-center cursor-pointer hover:border-[#A5BBA6]/60 transition-colors">
+<div class="w-8 h-8 rounded-full border border-dashed border-[#A5BBA6]/50 flex items-center justify-center text-[#A5BBA6] text-xs font-bold bg-[#171D1A]/50">?</div>
+</div>
+<!-- KART 11: Eşleşmiş açık kart (avokado sembolü) -->
+<div class="w-[78px] h-[92px] rounded-2xl bg-[#1E2E24] border-2 border-[#A5BBA6] flex flex-col items-center justify-center relative cursor-pointer shadow-sm">
+<div class="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-[#A5BBA6] text-[#171D1A] flex items-center justify-center">
+<svg class="w-2.5 h-2.5 stroke-current fill-none stroke-[3]" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</div>
+<svg class="w-7 h-7 text-[#A7C957]" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 2C8 2 6 7 6 13c0 4.4 2.7 8 6 8s6-3.6 6-8c0-6-2-11-6-11z" fill="#4B6043"></path>
+<path d="M12 4C9 4 7.5 8 7.5 13c0 3.6 2 6.5 4.5 6.5s4.5-2.9 4.5-6.5c0-5-1.5-9-4.5-9z" fill="#DDE5B6"></path>
+<circle cx="12" cy="14" fill="#6B705C" r="3"></circle>
+</svg>
+</div>
+<!-- KART 12: Eşleşmiş açık kart (limon/zeytin sembolü) -->
+<div class="w-[78px] h-[92px] rounded-2xl bg-[#1E2E24] border-2 border-[#A5BBA6] flex flex-col items-center justify-center relative cursor-pointer shadow-sm">
+<div class="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-[#A5BBA6] text-[#171D1A] flex items-center justify-center">
+<svg class="w-2.5 h-2.5 stroke-current fill-none stroke-[3]" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</div>
+<svg class="w-7 h-7 text-[#FFD166]" fill="currentColor" viewbox="0 0 24 24">
+<path d="M19.5 4.5c-2.8-2.8-7.5-2.2-11.2 1.5s-4.3 8.4-1.5 11.2 7.5 2.2 11.2-1.5 4.3-8.4 1.5-11.2zm-2.1 9.8c-2.9 2.9-6.4 3.4-8.5 1.3s-1.6-5.6 1.3-8.5 6.4-3.4 8.5-1.3 1.6 5.6-1.3 8.5z"></path>
+<path d="M20.5 3.5l1.5-1.5M3.5 20.5l-1.5 1.5" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path>
+</svg>
+</div>
+<!-- SATIR 4 -->
+<!-- KART 13: Eşleşmiş açık kart (bitki/yaprak sembolü) -->
+<div class="w-[78px] h-[92px] rounded-2xl bg-[#1E2E24] border-2 border-[#A5BBA6] flex flex-col items-center justify-center relative cursor-pointer shadow-sm">
+<div class="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-[#A5BBA6] text-[#171D1A] flex items-center justify-center">
+<svg class="w-2.5 h-2.5 stroke-current fill-none stroke-[3]" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</div>
+<svg class="w-7 h-7 text-[#A5BBA6]" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 2C7 6 5 12 12 22C12 16 17 12 12 2Z" fill-opacity="0.85"></path>
+<path d="M12 22C10 18 5 16 3 10C5 12 9 14 12 22Z" fill-opacity="0.95"></path>
+<path d="M12 22C14 18 19 16 21 10C19 12 15 14 12 22Z" fill-opacity="0.95"></path>
+</svg>
+</div>
+<!-- KART 14: Eşleşmiş açık kart (kahve fincanı sembolü) -->
+<div class="w-[78px] h-[92px] rounded-2xl bg-[#1E2E24] border-2 border-[#A5BBA6] flex flex-col items-center justify-center relative cursor-pointer shadow-sm">
+<div class="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-[#A5BBA6] text-[#171D1A] flex items-center justify-center">
+<svg class="w-2.5 h-2.5 stroke-current fill-none stroke-[3]" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</div>
+<svg class="w-7 h-7 text-[#D4A373]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+<path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" fill="#3B2F2F" fill-opacity="0.3"></path>
+<line stroke="#A5BBA6" x1="6" x2="6" y1="1" y2="4"></line>
+<line stroke="#A5BBA6" x1="10" x2="10" y1="1" y2="4"></line>
+<line stroke="#A5BBA6" x1="14" x2="14" y1="1" y2="4"></line>
+</svg>
+</div>
+<!-- KART 15: Kapalı/seçili açık kart (çam ağacı sembolü) -->
+<div class="w-[78px] h-[92px] rounded-2xl bg-[#252E28] border-2 border-[#A5BBA6] flex flex-col items-center justify-center relative cursor-pointer shadow-md">
+<svg class="w-7 h-7 text-[#A5BBA6]" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 2L6 9h3l-3 6h4l-3 5h10l-3-5h4l-3-6h3L12 2z"></path>
+</svg>
+</div>
+<!-- KART 16: Kapalı kart (? ikonu) -->
+<div class="w-[78px] h-[92px] rounded-2xl bg-[#252E28] border border-[#3B483F] flex items-center justify-center cursor-pointer hover:border-[#A5BBA6]/60 transition-colors">
+<div class="w-8 h-8 rounded-full border border-dashed border-[#A5BBA6]/50 flex items-center justify-center text-[#A5BBA6] text-xs font-bold bg-[#171D1A]/50">?</div>
+</div>
+</div>
+<!-- Bottom Action Bar: Duraklat Butonu -->
+<div class="pt-1 pb-4">
+<button class="w-full h-13 py-3.5 rounded-2xl bg-[#252E28] border border-[#3B483F] text-[#F1F4EF] font-semibold text-base flex items-center justify-center space-x-2.5 hover:border-[#A5BBA6] hover:bg-[#2A342E] active:scale-[0.98] transition-all shadow-sm" id="btnPause">
+<svg class="w-5 h-5 text-[#A5BBA6]" fill="currentColor" viewbox="0 0 24 24">
+<rect height="14" rx="1.5" width="4" x="6" y="5"></rect>
+<rect height="14" rx="1.5" width="4" x="14" y="5"></rect>
+</svg>
+<span class="tracking-wide">Duraklat</span>
+</button>
+</div>
+</div>
+<!-- Home Indicator (iOS Bar) -->
+<div class="h-5 flex items-center justify-center select-none pb-1">
+<div class="w-32 h-1 bg-[#F1F4EF]/30 rounded-full"></div>
+</div>
+<!-- Interactive Ayarlar Modal (Ses ve Titreşim) -->
+<div class="hidden absolute inset-0 z-50 bg-black/60 backdrop-blur-sm flex flex-col justify-end transition-opacity duration-200" id="settingsModal">
+<div class="bg-[#252E28] border-t border-[#3B483F] rounded-t-3xl p-6 shadow-2xl space-y-4">
+<div class="w-10 h-1 bg-[#F1F4EF]/20 rounded-full mx-auto mb-2"></div>
+<div class="flex items-center justify-between">
+<h3 class="text-base font-bold text-[#F1F4EF]">Oyun Ayarları</h3>
+<button class="text-xs text-[#A5BBA6] font-medium p-1" id="btnCloseSettings">Kapat</button>
+</div>
+<!-- Ses Toggle -->
+<div class="flex items-center justify-between py-2 border-b border-[#3B483F]/50">
+<div class="flex items-center space-x-3">
+<svg class="w-5 h-5 text-[#A5BBA6]" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+<path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+</svg>
+<span class="text-sm font-medium text-[#F1F4EF]">Ses Efektleri</span>
+</div>
+<div class="w-11 h-6 bg-[#A5BBA6] rounded-full p-0.5 flex items-center justify-end cursor-pointer">
+<div class="w-5 h-5 bg-[#171D1A] rounded-full shadow"></div>
+</div>
+</div>
+<!-- Titreşim Toggle -->
+<div class="flex items-center justify-between py-2">
+<div class="flex items-center space-x-3">
+<svg class="w-5 h-5 text-[#A5BBA6]" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M2 8v8M22 8v8M5 5v14M19 5v14M9 3h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"></path>
+</svg>
+<span class="text-sm font-medium text-[#F1F4EF]">Haptik / Titreşim</span>
+</div>
+<div class="w-11 h-6 bg-[#A5BBA6] rounded-full p-0.5 flex items-center justify-end cursor-pointer">
+<div class="w-5 h-5 bg-[#171D1A] rounded-full shadow"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+    // Settings modal toggle
+    const settingsBtn = document.getElementById('btnSettings');
+    const settingsModal = document.getElementById('settingsModal');
+    const closeSettings = document.getElementById('btnCloseSettings');
+
+    if (settingsBtn && settingsModal && closeSettings) {
+      settingsBtn.addEventListener('click', () => {
+        settingsModal.classList.remove('hidden');
+      });
+      closeSettings.addEventListener('click', () => {
+        settingsModal.classList.add('hidden');
+      });
+      settingsModal.addEventListener('click', (e) => {
+        if (e.target === settingsModal) {
+          settingsModal.classList.add('hidden');
+        }
+      });
+    }
+  </script>
+</body></html>

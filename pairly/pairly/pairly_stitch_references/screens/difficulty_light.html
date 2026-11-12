@@ -1,0 +1,415 @@
+<!DOCTYPE html><html lang="tr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Pairly - Zorluk Seviyesi Seç</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-variant": "#e0e3dd",
+            "on-tertiary-fixed": "#2b1618",
+            "tertiary-container": "#7f6164",
+            "on-primary-container": "#d9eedb",
+            "primary-fixed-dim": "#b7ccba",
+            "surface-container": "#ecefe8",
+            "on-secondary-fixed-variant": "#3c4b3a",
+            "tertiary-fixed": "#ffd9dc",
+            "on-tertiary": "#ffffff",
+            "primary-container": "#5a6d5e",
+            "tertiary-fixed-dim": "#e3bdc1",
+            "on-primary": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-surface": "#191d19",
+            "secondary": "#536251",
+            "error-container": "#ffdad6",
+            "surface-container-lowest": "#ffffff",
+            "inverse-surface": "#2d312d",
+            "on-secondary-container": "#586755",
+            "outline": "#737873",
+            "inverse-primary": "#b7ccba",
+            "surface-bright": "#f7faf4",
+            "on-surface-variant": "#434843",
+            "secondary-container": "#d4e4ce",
+            "on-secondary": "#ffffff",
+            "secondary-fixed-dim": "#bbcbb6",
+            "surface-dim": "#d8dbd5",
+            "on-tertiary-fixed-variant": "#5a4043",
+            "on-primary-fixed": "#0e1f14",
+            "surface-container-highest": "#e0e3dd",
+            "surface-tint": "#506354",
+            "inverse-on-surface": "#eff2eb",
+            "outline-variant": "#c3c8c1",
+            "primary-fixed": "#d3e8d5",
+            "background": "#f7faf4",
+            "surface-container-low": "#f2f5ee",
+            "on-error": "#ffffff",
+            "secondary-fixed": "#d7e7d1",
+            "on-primary-fixed-variant": "#394b3d",
+            "tertiary": "#65494c",
+            "on-background": "#191d19",
+            "surface": "#f7faf4",
+            "surface-container-high": "#e6e9e3",
+            "primary": "#425547",
+            "error": "#ba1a1a",
+            "on-secondary-fixed": "#111f11",
+            "on-tertiary-container": "#ffe2e4"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1.5rem",
+            "space-xl": "2rem",
+            "gutter": "1rem",
+            "margin": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "headline-sm": ["Manrope"],
+            "display": ["Manrope"],
+            "body-sm": ["DM Sans"],
+            "label-sm": ["DM Sans"],
+            "label-md": ["DM Sans"],
+            "headline-md": ["Manrope"],
+            "body-md": ["DM Sans"],
+            "label-lg": ["DM Sans"],
+            "headline-lg": ["Manrope"],
+            "body-lg": ["DM Sans"]
+          },
+          "fontSize": {
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "display": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-lg": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    /* Hide scrollbar for seamless touch presentation */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-[#111311] min-h-screen flex items-center justify-center p-0 md:p-6 antialiased selection:bg-secondary-container">
+<!-- Mobile Viewport Frame (390 x 844 px) -->
+<main class="relative w-full max-w-[390px] h-[844px] overflow-hidden bg-background shadow-2xl md:rounded-[40px] border border-outline-variant/30 flex flex-col justify-between">
+<!-- ============================================== -->
+<!-- BACKGROUND SCREEN: PAIRLY HOME PAGE (SOFT BLURRED) -->
+<!-- ============================================== -->
+<div class="absolute inset-0 flex flex-col pointer-events-none select-none z-0">
+<!-- Top Bar of Background Home -->
+<header class="flex justify-between items-center w-full px-margin h-14 max-w-[390px] mx-auto border-b border-surface-container-highest/60">
+<button aria-label="Geri" class="w-9 h-9 flex items-center justify-center rounded-full text-on-surface-variant">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<span class="font-headline-md text-headline-md tracking-tight font-semibold text-on-surface">Pairly</span>
+<button aria-label="Yenile" class="w-9 h-9 flex items-center justify-center rounded-full text-on-surface-variant">
+<span class="material-symbols-outlined">refresh</span>
+</button>
+</header>
+<!-- Ambient Hero Visuals -->
+<div class="px-margin pt-6 flex flex-col items-center">
+<!-- Botanical Subtle Badge -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/40 mb-3">
+<span class="material-symbols-outlined text-primary text-[14px]">spa</span>
+<span class="font-label-sm text-label-sm text-secondary tracking-wider">GÜNLÜK FARKINDALIK</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface text-center mb-1">Hafızanı keşfet</h1>
+<p class="font-body-md text-body-md text-on-surface-variant text-center max-w-[260px]">
+          Zihnini dinlendirirken desenlerin ve eşleşmelerin uyumuna odaklan.
+        </p>
+<!-- Mock Floating Architectural Memory Cards -->
+<div class="grid grid-cols-3 gap-3 w-full mt-7 px-2">
+<!-- Card 1 -->
+<div class="aspect-[3/4] bg-surface-container-lowest rounded-xl border border-outline-variant flex flex-col items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary-container text-2xl">eco</span>
+</div>
+<!-- Card 2 Matched state -->
+<div class="aspect-[3/4] bg-primary-container/10 rounded-xl border border-primary-container flex flex-col items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary text-2xl">circle</span>
+</div>
+<!-- Card 3 -->
+<div class="aspect-[3/4] bg-surface-container-lowest rounded-xl border border-outline-variant flex flex-col items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-outline-variant text-2xl">grain</span>
+</div>
+<!-- Card 4 -->
+<div class="aspect-[3/4] bg-surface-container-lowest rounded-xl border border-outline-variant flex flex-col items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-outline-variant text-2xl">filter_vintage</span>
+</div>
+<!-- Card 5 -->
+<div class="aspect-[3/4] bg-primary-container/10 rounded-xl border border-primary-container flex flex-col items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary text-2xl">circle</span>
+</div>
+<!-- Card 6 -->
+<div class="aspect-[3/4] bg-surface-container-lowest rounded-xl border border-outline-variant flex flex-col items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary-container text-2xl">psychology</span>
+</div>
+</div>
+<!-- Recent Record Strip -->
+<div class="w-full mt-6 p-4 rounded-xl bg-surface-container-lowest border border-outline-variant flex justify-between items-center">
+<div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">SON SEANS</div>
+<div class="font-headline-sm text-headline-sm text-on-surface">16 Hamle • 01:24</div>
+</div>
+<span class="material-symbols-outlined text-primary">trending_up</span>
+</div>
+</div>
+</div>
+<!-- ============================================== -->
+<!-- BACKDROP SCRIM (TINT & BLUR OVERLAY) -->
+<!-- ============================================== -->
+<div class="absolute inset-0 bg-[#191D19]/40 backdrop-blur-[3px] z-10 transition-opacity"></div>
+<!-- ============================================== -->
+<!-- NATIVE MODAL BOTTOM SHEET -->
+<!-- ============================================== -->
+<section aria-labelledby="sheet-title" aria-modal="true" class="relative z-20 w-full mt-auto bg-surface-container-lowest rounded-t-[28px] border-t border-outline-variant/40 shadow-[0_-12px_36px_rgba(25,29,25,0.16)] flex flex-col max-h-[720px] transition-transform animate-in fade-in slide-in-from-bottom duration-300" role="dialog">
+<!-- Drag Handle Bar Indicator -->
+<div class="w-full pt-3 pb-2 flex justify-center items-center cursor-grab active:cursor-grabbing">
+<div class="w-10 h-1 rounded-full bg-outline-variant/80"></div>
+</div>
+<!-- Sheet Header -->
+<div class="px-margin pt-1 pb-3 flex items-start justify-between">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface tracking-tight" id="sheet-title">
+            Zorluk Seviyesi Seç
+          </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+            Hafıza matrisini ve oyun temposunu belirle.
+          </p>
+</div>
+<!-- Soft Circular Close Action -->
+<button aria-label="Kapat" class="w-8 h-8 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant flex items-center justify-center transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- List of 5 Difficulty Levels (Clean Scrollable Container) -->
+<div class="px-margin space-y-2.5 overflow-y-auto no-scrollbar max-h-[420px] py-1"><!-- 1. Başlangıç -->
+<label onclick="selectDifficulty(this)" class="difficulty-card group relative flex items-center justify-between p-3.5 rounded-2xl border border-outline-variant bg-surface-container-lowest hover:border-outline transition-all cursor-pointer select-none">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-surface-container-low border border-outline-variant/50 flex items-center justify-center group-hover:bg-surface-container transition-colors">
+<div class="grid grid-cols-3 gap-1 p-1">
+<span class="w-1.5 h-1.5 rounded-[1px] bg-secondary"></span>
+<span class="w-1.5 h-1.5 rounded-[1px] bg-secondary"></span>
+<span class="w-1.5 h-1.5 rounded-[1px] bg-secondary"></span>
+<span class="w-1.5 h-1.5 rounded-[1px] bg-secondary"></span>
+<span class="w-1.5 h-1.5 rounded-[1px] bg-secondary"></span>
+<span class="w-1.5 h-1.5 rounded-[1px] bg-secondary"></span>
+</div>
+</div>
+<div>
+<div class="font-headline-sm text-[15px] font-semibold text-on-surface leading-tight">Başlangıç</div>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">6 Kart • 3x2 Izgara</span>
+</div>
+</div>
+</div>
+</label>
+<!-- 2. Kolay -->
+<label onclick="selectDifficulty(this)" class="difficulty-card group relative flex items-center justify-between p-3.5 rounded-2xl border border-outline-variant bg-surface-container-lowest hover:border-outline transition-all cursor-pointer select-none">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-surface-container-low border border-outline-variant/50 flex items-center justify-center group-hover:bg-surface-container transition-colors">
+<div class="grid grid-cols-3 gap-1 p-1">
+<span class="w-1.5 h-1 rounded-[1px] bg-secondary"></span>
+<span class="w-1.5 h-1 rounded-[1px] bg-secondary"></span>
+<span class="w-1.5 h-1 rounded-[1px] bg-secondary"></span>
+<span class="w-1.5 h-1 rounded-[1px] bg-secondary"></span>
+<span class="w-1.5 h-1 rounded-[1px] bg-secondary"></span>
+<span class="w-1.5 h-1 rounded-[1px] bg-secondary"></span>
+<span class="w-1.5 h-1 rounded-[1px] bg-secondary"></span>
+<span class="w-1.5 h-1 rounded-[1px] bg-secondary"></span>
+<span class="w-1.5 h-1 rounded-[1px] bg-secondary"></span>
+<span class="w-1.5 h-1 rounded-[1px] bg-secondary"></span>
+<span class="w-1.5 h-1 rounded-[1px] bg-secondary"></span>
+<span class="w-1.5 h-1 rounded-[1px] bg-secondary"></span>
+</div>
+</div>
+<div>
+<div class="font-headline-sm text-[15px] font-semibold text-on-surface leading-tight">Kolay</div>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">12 Kart • 3x4 Izgara</span>
+</div>
+</div>
+</div>
+</label>
+<!-- 3. Orta (Selected / Aktif Seviye) -->
+<label onclick="selectDifficulty(this)" class="difficulty-card group relative flex items-center justify-between p-3.5 rounded-2xl border-2 border-primary-container bg-surface-container-low shadow-[0_4px_16px_rgba(90,109,94,0.12)] cursor-pointer select-none">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-secondary-container/50 border border-primary-container/30 flex items-center justify-center">
+<div class="grid grid-cols-4 gap-0.5 p-1">
+<span class="w-1 h-1 rounded-[0.5px] bg-primary-container"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-primary-container"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-primary-container"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-primary-container"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-primary-container"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-primary-container"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-primary-container"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-primary-container"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-primary-container"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-primary-container"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-primary-container"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-primary-container"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-primary-container"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-primary-container"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-primary-container"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-primary-container"></span>
+</div>
+</div>
+<div>
+<div class="font-headline-sm text-[15px] font-semibold text-on-surface leading-tight">Orta</div>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">16 Kart • 4x4 Izgara</span>
+</div>
+</div>
+</div>
+</label>
+<!-- 4. Zor -->
+<label onclick="selectDifficulty(this)" class="difficulty-card group relative flex items-center justify-between p-3.5 rounded-2xl border border-outline-variant bg-surface-container-lowest hover:border-outline transition-all cursor-pointer select-none">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-surface-container-low border border-outline-variant/50 flex items-center justify-center group-hover:bg-surface-container transition-colors">
+<div class="grid grid-cols-4 gap-0.5 p-1">
+<span class="w-1 h-1 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-1 rounded-[0.5px] bg-secondary"></span>
+</div>
+</div>
+<div>
+<div class="font-headline-sm text-[15px] font-semibold text-on-surface leading-tight">Zor</div>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">20 Kart • 4x5 Izgara</span>
+</div>
+</div>
+</div>
+</label>
+<!-- 5. Uzman -->
+<label onclick="selectDifficulty(this)" class="difficulty-card group relative flex items-center justify-between p-3.5 rounded-2xl border border-outline-variant bg-surface-container-lowest hover:border-outline transition-all cursor-pointer select-none">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-surface-container-low border border-outline-variant/50 flex items-center justify-center group-hover:bg-surface-container transition-colors">
+<div class="grid grid-cols-4 gap-0.5 p-1">
+<span class="w-1 h-0.5 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-0.5 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-0.5 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-0.5 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-0.5 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-0.5 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-0.5 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-0.5 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-0.5 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-0.5 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-0.5 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-0.5 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-0.5 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-0.5 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-0.5 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-0.5 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-0.5 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-0.5 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-0.5 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-0.5 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-0.5 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-0.5 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-0.5 rounded-[0.5px] bg-secondary"></span>
+<span class="w-1 h-0.5 rounded-[0.5px] bg-secondary"></span>
+</div>
+</div>
+<div>
+<div class="font-headline-sm text-[15px] font-semibold text-on-surface leading-tight">Uzman</div>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">24 Kart • 4x6 Izgara</span>
+</div>
+</div>
+</div>
+</label></div>
+<!-- Bottom Docked CTA Section -->
+<div class="p-margin pt-3 pb-6 bg-surface-container-lowest border-t border-surface-container-highest">
+<button class="w-full h-12 bg-primary-container hover:bg-primary active:scale-[0.98] transition-all rounded-xl text-on-primary font-headline-sm text-[15px] font-semibold tracking-wide flex items-center justify-center gap-2 shadow-sm" type="button">
+<span>Oyunu Başlat</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Interactive State Controller (Lightweight inline script) -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const labels = document.querySelectorAll('label');
+      labels.forEach(label => {
+        label.addEventListener('click', () => {
+          labels.forEach(l => {
+            // Remove active styles
+            l.classList.remove('border-2', 'border-primary-container', 'bg-surface-container-low', 'shadow-[0_4px_16px_rgba(90,109,94,0.12)]');
+            l.classList.add('border', 'border-outline-variant', 'bg-surface-container-lowest');
+            const radioContainer = l.querySelector('div:last-child');
+            if (radioContainer) {
+              radioContainer.className = 'w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center group-hover:border-outline transition-colors';
+              radioContainer.innerHTML = '<input type="radio" name="difficulty" class="sr-only">';
+            }
+          });
+
+          // Apply active styling to selected
+          label.classList.remove('border', 'border-outline-variant', 'bg-surface-container-lowest');
+          label.classList.add('border-2', 'border-primary-container', 'bg-surface-container-low', 'shadow-[0_4px_16px_rgba(90,109,94,0.12)]');
+          const activeRadio = label.querySelector('div:last-child');
+          if (activeRadio) {
+            activeRadio.className = 'w-5 h-5 rounded-full bg-primary-container flex items-center justify-center text-on-primary shadow-xs';
+            activeRadio.innerHTML = '<input type="radio" name="difficulty" checked class="sr-only"><span class="material-symbols-outlined text-[14px]" style="font-variation-settings: \'FILL\' 1;">check</span>';
+          }
+        });
+      });
+    });
+  </script>
+
+
+</body></html>

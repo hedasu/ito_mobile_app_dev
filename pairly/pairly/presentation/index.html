@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pairly — Flutter Mobil Hafıza Oyunu | Proje Sunumu</title>
+  <link rel="stylesheet" href="css/presentation.css" />
+</head>
+<body>
+  <div class="presentation-shell">
+    <!-- Üst İlerleme Çubuğu -->
+    <div class="top-progress-track">
+      <div class="top-progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Üst Kontrol ve Bölüm Barı -->
+    <header class="deck-topbar">
+      <div class="brand-pill">
+        <img src="assets/pairly_logo.png" alt="Pairly Logo" />
+        <span>Pairly</span>
+        <span class="brand-tag">Proje Sunumu</span>
+      </div>
+
+      <nav class="chapter-dots" id="chapterNav" aria-label="Sunum Bölümleri">
+        <button class="chapter-btn active" data-slide="0">1. Giriş</button>
+        <button class="chapter-btn" data-slide="1">2. Amaç</button>
+        <button class="chapter-btn" data-slide="2">3. UX</button>
+        <button class="chapter-btn" data-slide="3">4. Algoritma</button>
+        <button class="chapter-btn" data-slide="4">5. State</button>
+        <button class="chapter-btn" data-slide="5">6. Mimari</button>
+        <button class="chapter-btn" data-slide="6">7. Tasarım</button>
+        <button class="chapter-btn" data-slide="7">8. Testler</button>
+        <button class="chapter-btn" data-slide="8">9. Canlı Demo</button>
+      </nav>
+
+      <div class="toolbar-actions">
+        <button class="icon-btn" id="btnNotes" type="button" title="Konuşmacı Notları (N)">
+          <span>Notlar (N)</span>
+        </button>
+        <button class="icon-btn" id="btnTheme" type="button" title="Açık / Koyu Tema (T)">
+          <span id="themeLabel">Koyu Tema (T)</span>
+        </button>
+        <button class="icon-btn" id="btnFullscreen" type="button" title="Tam Ekran (F)">
+          <span>Tam Ekran (F)</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- 9 Bölümlük Görsel Ağırlıklı Slayt Alanı -->
+    <main class="slides-viewport" id="slidesViewport">
+
+      <!-- ================================================================
+           SLAYT 1: GİRİŞ
+           ================================================================ -->
+      <section class="slide active" data-index="0"
+        data-notes="Pairly; Flutter ve Dart ile sıfır harici paket kullanılarak geliştirilmiş, İskandinav minimalizmi çizgisinde bir mobil kart eşleştirme oyunudur.">
+        <div class="slide-inner">
+          <div class="hero-layout">
+            <div>
+              <div class="hero-brand-row">
+                <img src="assets/pairly_logo.png" alt="Pairly Resmi Logo" />
+                <div>
+                  <div class="section-kicker" style="margin-bottom: 2px;">Mobil Uygulama Projesi</div>
+                  <div style="font-size: 1.45rem; font-weight: 800;">Pairly</div>
+                </div>
+              </div>
+
+              <h1 class="hero-main-title">
+                Hafızanı keşfet,<br />
+                zihnini dinlendir.
+              </h1>
+
+              <p class="hero-lead">
+                Dingin, reklamsız ve odaklı mobil kart eşleştirme deneyimi.
+              </p>
+
+              <div class="chip-row">
+                <span class="tech-chip"><strong>Flutter</strong> &amp; Material 3</span>
+                <span class="tech-chip"><strong>Dart 3</strong> • Sıfır Harici Paket</span>
+                <span class="tech-chip"><strong>Clean</strong> Architecture</span>
+              </div>
+            </div>
+
+            <div class="grid-2" style="align-items: center;">
+              <div class="phone-frame">
+                <img src="assets/screenshots/flutter_app_game.png" alt="Gerçek Flutter Uygulaması Oyun Ekranı" />
+                <div class="frame-caption">
+                  <span class="badge-real">Gerçek Uygulama</span> Açık Tema
+                </div>
+              </div>
+              <div class="phone-frame">
+                <img src="assets/screenshots/game_dark_ref.png" alt="Koyu Tema Oyun Ekranı" />
+                <div class="frame-caption">
+                  <span class="badge-stitch">Tasarım Referansı</span> Koyu Tema
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SLAYT 2: PROJE AMACI
+           ================================================================ -->
+      <section class="slide" data-index="1"
+        data-notes="Projemiz üç temel hedef üzerine kurulmuştur: dikkat dağıtmayan sade bir kullanıcı deneyimi, harici paketlere bağımlı olmayan sürdürülebilir yazılım ve tüm özellikleriyle çalışan bir mobil oyun.">
+        <div class="slide-inner">
+          <div class="slide-header">
+            <div>
+              <div class="section-kicker">Bölüm 2 / 9 • Vizyon</div>
+              <h2 class="slide-title">Proje Amacı</h2>
+            </div>
+          </div>
+
+          <div class="grid-3">
+            <div class="goal-card">
+              <div class="goal-icon-circle" aria-hidden="true">🌿</div>
+              <div class="goal-title">Sade Kullanıcı Deneyimi</div>
+              <p class="goal-sentence">
+                Karmaşık menülerden ve görsel gürültüden arındırılmış, yalnızca odaklanmayı destekleyen dingin bir arayüz sunar.
+              </p>
+            </div>
+
+            <div class="goal-card card-highlight">
+              <div class="goal-icon-circle" aria-hidden="true">🧩</div>
+              <div class="goal-title">Bağımsız ve Sürdürülebilir Yazılım</div>
+              <p class="goal-sentence">
+                Hiçbir harici paket kullanmadan, tamamen Flutter ve Dart'ın yerleşik yetenekleriyle modüler olarak geliştirilmiştir.
+              </p>
+            </div>
+
+            <div class="goal-card">
+              <div class="goal-icon-circle" aria-hidden="true">🎯</div>
+              <div class="goal-title">Çalışan Mobil Oyun</div>
+              <p class="goal-sentence">
+                Beş zorluk seviyesi, canlı sayaçlar ve kalıcı kişisel rekor sistemiyle uçtan uca tamamlanmış bir üründür.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SLAYT 3: KULLANICI DENEYİMİ
+           ================================================================ -->
+      <section class="slide" data-index="2"
+        data-notes="Kullanıcı akışı 5 adımdan oluşur: Ana Sayfa, Zorluk Seçimi alt penceresi, Oyun Ekranı, Sonuç Ekranı ve İstatistikler. Alt şeritte 3x2'den 4x6'ya uzanan 5 zorluk seviyesi yer alır.">
+        <div class="slide-inner">
+          <div class="slide-header">
+            <div>
+              <div class="section-kicker">Bölüm 3 / 9 • Akış ve Seviyeler</div>
+              <h2 class="slide-title">Kullanıcı Deneyimi</h2>
+            </div>
+          </div>
+
+          <!-- Yatay Görsel Kullanıcı Akışı: Ana Sayfa -> Zorluk Seçimi -> Oyun -> Sonuç -> İstatistikler -->
+          <div class="ux-flow-strip">
+            <div class="ux-flow-node">
+              <div class="ux-screen-thumb">
+                <div class="ux-mock-screen">
+                  <img src="assets/pairly_logo.png" alt="Pairly Logo" style="width: 54px; height: 54px; border-radius: 14px;" />
+                  <div style="font-weight: 800; font-size: 0.92rem;">Hafızanı keşfet</div>
+                  <div style="background: var(--primary); color: var(--bg-canvas); font-size: 0.72rem; font-weight: 700; padding: 6px 14px; border-radius: 999px;">▶ Oyuna Başla</div>
+                  <div style="border: 1px solid var(--border-color); font-size: 0.7rem; padding: 5px 14px; border-radius: 999px;">İstatistikler</div>
+                </div>
+              </div>
+              <div class="ux-step-label">1. Ana Sayfa</div>
+              <div class="ux-step-sub">Hızlı Başlangıç &amp; Tema</div>
+            </div>
+
+            <div class="ux-flow-arrow">→</div>
+
+            <div class="ux-flow-node">
+              <div class="ux-screen-thumb">
+                <img src="assets/screenshots/difficulty_dark_ref.png" alt="Zorluk Seçimi" />
+              </div>
+              <div class="ux-step-label">2. Zorluk Seçimi</div>
+              <div class="ux-step-sub">Modal Bottom Sheet</div>
+            </div>
+
+            <div class="ux-flow-arrow">→</div>
+
+            <div class="ux-flow-node highlight-node">
+              <div class="ux-screen-thumb">
+                <img src="assets/screenshots/flutter_app_game.png" alt="Oyun Ekranı" />
+              </div>
+              <div class="ux-step-label">3. Oyun</div>
+              <div class="ux-step-sub">Süre, Hamle &amp; 3B Kartlar</div>
+            </div>
+
+            <div class="ux-flow-arrow">→</div>
+
+            <div class="ux-flow-node">
+              <div class="ux-screen-thumb">
+                <div class="ux-mock-screen">
+                  <div style="width: 44px; height: 44px; border-radius: 50%; background: var(--primary-soft); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 800;">🏆</div>
+                  <div style="font-weight: 800; font-size: 0.9rem;">Tebrikler!</div>
+                  <div style="font-size: 0.72rem; color: var(--primary); font-weight: 700; background: var(--primary-soft); padding: 3px 9px; border-radius: 999px;">★ Yeni En İyi Süre</div>
+                  <div style="font-size: 0.75rem; color: var(--text-secondary);">01:12 • 14 Hamle</div>
+                </div>
+              </div>
+              <div class="ux-step-label">4. Sonuç</div>
+              <div class="ux-step-sub">Skor &amp; Yeni Rekor</div>
+            </div>
+
+            <div class="ux-flow-arrow">→</div>
+
+            <div class="ux-flow-node">
+              <div class="ux-screen-thumb">
+                <img src="assets/screenshots/statistics_dark_ref.png" alt="İstatistikler" />
+              </div>
+              <div class="ux-step-label">5. İstatistikler</div>
+              <div class="ux-step-sub">Rekorlar &amp; Son 5 Oyun</div>
+            </div>
+          </div>
+
+          <!-- Beş Zorluk Seviyesi Şeridi -->
+          <div class="matrix-strip">
+            <div class="matrix-pill">
+              <div>
+                <div style="font-weight: 700; font-size: 0.9rem;">Başlangıç</div>
+                <div style="font-size: 0.76rem; color: var(--text-secondary);">6 Kart</div>
+              </div>
+              <span class="matrix-badge">3×2</span>
+            </div>
+            <div class="matrix-pill">
+              <div>
+                <div style="font-weight: 700; font-size: 0.9rem;">Kolay</div>
+                <div style="font-size: 0.76rem; color: var(--text-secondary);">12 Kart</div>
+              </div>
+              <span class="matrix-badge">3×4</span>
+            </div>
+            <div class="matrix-pill active-level">
+              <div>
+                <div style="font-weight: 800; font-size: 0.9rem;">Orta</div>
+                <div style="font-size: 0.76rem; color: var(--primary); font-weight: 700;">16 Kart • Varsayılan</div>
+              </div>
+              <span class="matrix-badge">4×4</span>
+            </div>
+            <div class="matrix-pill">
+              <div>
+                <div style="font-weight: 700; font-size: 0.9rem;">Zor</div>
+                <div style="font-size: 0.76rem; color: var(--text-secondary);">20 Kart</div>
+              </div>
+              <span class="matrix-badge">4×5</span>
+            </div>
+            <div class="matrix-pill">
+              <div>
+                <div style="font-weight: 700; font-size: 0.9rem;">Uzman</div>
+                <div style="font-size: 0.76rem; color: var(--text-secondary);">24 Kart</div>
+              </div>
+              <span class="matrix-badge">4×6</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SLAYT 4: OYUN ALGORİTMASI
+           ================================================================ -->
+      <section class="slide" data-index="3"
+        data-notes="Kartlar Fisher-Yates algoritmasıyla O(n) karmaşıklıkta adil biçimde karıştırılır. Eşleştirme sürecinde iki kart açılır, pairId değerleri karşılaştırılır; eşleşirse açık kalır, eşleşmezse 700 ms sonra otomatik kapanır.">
+        <div class="slide-inner">
+          <div class="slide-header">
+            <div>
+              <div class="section-kicker">Bölüm 4 / 9 • Çekirdek Mantık</div>
+              <h2 class="slide-title">Oyun Algoritması</h2>
+            </div>
+          </div>
+
+          <!-- Kartların Açılma, Karşılaştırılma ve Eşleşme Animasyonu -->
+          <div class="algo-anim-bar" id="algoAnimBar">
+            <div class="algo-stage-steps">
+              <div class="algo-step-box active-step" data-algo-step="0">
+                <div class="mini-card-pair">
+                  <div class="mini-card">?</div>
+                  <div class="mini-card">?</div>
+                </div>
+                <div>
+                  <div style="font-weight: 800; font-size: 0.88rem;">1. Kapalı Deste</div>
+                  <div style="font-size: 0.76rem; color: var(--text-secondary);">Fisher-Yates dizilimi</div>
+                </div>
+              </div>
+
+              <div class="ux-flow-arrow">→</div>
+
+              <div class="algo-step-box" data-algo-step="1">
+                <div class="mini-card-pair">
+                  <div class="mini-card">🌸</div>
+                  <div class="mini-card">🌸</div>
+                </div>
+                <div>
+                  <div style="font-weight: 800; font-size: 0.88rem;">2. Kartlar Açılır</div>
+                  <div style="font-size: 0.76rem; color: var(--text-secondary);">Tahta kilitlenir</div>
+                </div>
+              </div>
+
+              <div class="ux-flow-arrow">→</div>
+
+              <div class="algo-step-box" data-algo-step="2">
+                <div class="mini-card-pair">
+                  <div class="mini-card matched">✓</div>
+                  <div class="mini-card matched">✓</div>
+                </div>
+                <div>
+                  <div style="font-weight: 800; font-size: 0.88rem;">3. Karşılaştırma</div>
+                  <div style="font-size: 0.76rem; color: var(--text-secondary);">Eşleşti / 700ms Kapan</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- En Kritik Gerçek Dart Kod Satırları -->
+          <div class="grid-2">
+            <div class="code-window">
+              <div class="code-header">
+                <div class="window-dots"><span></span><span></span><span></span></div>
+                <span>Fisher-Yates Karıştırma • deck_generator.dart</span>
+              </div>
+              <div class="code-body"><span class="cm">// O(n) karmaşıklıkta adil deste karıştırma</span>
+<span class="kw">for</span> (<span class="kw">var</span> i = rawCards.length - <span class="nm">1</span>; i &gt; <span class="nm">0</span>; i--) {
+  <span class="kw">final</span> j = rng.<span class="fn">nextInt</span>(i + <span class="nm">1</span>);
+  <span class="kw">final</span> temp = rawCards[i];
+  rawCards[i] = rawCards[j];
+  rawCards[j] = temp;
+}</div>
+            </div>
+
+            <div class="code-window">
+              <div class="code-header">
+                <div class="window-dots"><span></span><span></span><span></span></div>
+                <span>Kart Eşleştirme • game_controller.dart</span>
+              </div>
+              <div class="code-body"><span class="kw">if</span> (firstCard.pairId == secondCard.pairId) {
+  _cards = <span class="tp">List</span>&lt;<span class="tp">MemoryCardItem</span>&gt;.<span class="fn">from</span>(_cards)
+    ..[firstIndex] = firstCard.<span class="fn">copyWith</span>(isFlipped: <span class="kw">true</span>, isMatched: <span class="kw">true</span>)
+    ..[secondIndex] = secondCard.<span class="fn">copyWith</span>(isFlipped: <span class="kw">true</span>, isMatched: <span class="kw">true</span>);
+  _matches++;
+} <span class="kw">else</span> {
+  _mismatchTimer = <span class="tp">Timer</span>(mismatchDelay, () { <span class="cm">/* 700ms sonra kapat */</span> });
+}</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SLAYT 5: STATE MANAGEMENT
+           ================================================================ -->
+      <section class="slide" data-index="4"
+        data-notes="Durum yönetiminde harici paket yerine Flutter'ın yerleşik ChangeNotifier sınıfı kullanılmıştır. Controller içinde durum değiştiğinde notifyListeners() çağrılır ve yalnızca ilgili widget yeniden çizilir.">
+        <div class="slide-inner">
+          <div class="slide-header">
+            <div>
+              <div class="section-kicker">Bölüm 5 / 9 • Reaktif Akış</div>
+              <h2 class="slide-title">State Management</h2>
+            </div>
+          </div>
+
+          <!-- Sade Reaktif Akış Diyagramı -->
+          <div class="state-flow-diagram">
+            <div class="state-node">
+              <span class="state-node-tag">1. Durum &amp; Kural</span>
+              <div class="state-node-title">GameController</div>
+              <div class="state-node-desc">Kart, süre ve hamle verisini günceller</div>
+            </div>
+
+            <div class="ux-flow-arrow">→</div>
+
+            <div class="state-node state-node-active">
+              <span class="state-node-tag">2. Tetikleme</span>
+              <div class="state-node-title">notifyListeners()</div>
+              <div class="state-node-desc">Dinleyen bileşenlere sinyal gönderir</div>
+            </div>
+
+            <div class="ux-flow-arrow">→</div>
+
+            <div class="state-node">
+              <span class="state-node-tag">3. Arayüz</span>
+              <div class="state-node-title">Widget Güncellenir</div>
+              <div class="state-node-desc">ListenableBuilder &amp; NotifierScope</div>
+            </div>
+          </div>
+
+          <!-- 3-5 Satırlık Gerçek Kod + 3 Controller Özeti -->
+          <div class="grid-2" style="align-items: center;">
+            <div class="code-window">
+              <div class="code-header">
+                <div class="window-dots"><span></span><span></span><span></span></div>
+                <span>game_controller.dart &amp; game_screen.dart</span>
+              </div>
+              <div class="code-body"><span class="kw">class</span> <span class="tp">GameController</span> <span class="kw">extends</span> <span class="tp">ChangeNotifier</span> {
+  <span class="kw">void</span> <span class="fn">togglePause</span>() {
+    _isPaused = !_isPaused;
+    <span class="fn">notifyListeners</span>();
+  }
+}</div>
+            </div>
+
+            <div class="layer-stack">
+              <div class="layer-box" style="padding: 12px 18px;">
+                <div>
+                  <strong style="font-size: 0.96rem;">GameController</strong>
+                  <div style="font-size: 0.82rem; color: var(--text-secondary);">Oyun tahtası, sayaçlar ve duraklatma</div>
+                </div>
+                <span class="brand-tag">Oyun</span>
+              </div>
+              <div class="layer-box" style="padding: 12px 18px;">
+                <div>
+                  <strong style="font-size: 0.96rem;">StatisticsController</strong>
+                  <div style="font-size: 0.82rem; color: var(--text-secondary);">Kişisel rekorlar ve son 5 oyun kaydı</div>
+                </div>
+                <span class="brand-tag">İstatistik</span>
+              </div>
+              <div class="layer-box" style="padding: 12px 18px;">
+                <div>
+                  <strong style="font-size: 0.96rem;">AppSettingsController</strong>
+                  <div style="font-size: 0.82rem; color: var(--text-secondary);">Light / Dark / System tema ve geri bildirim</div>
+                </div>
+                <span class="brand-tag">Tema</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SLAYT 6: YAZILIM MİMARİSİ
+           ================================================================ -->
+      <section class="slide" data-index="5"
+        data-notes="Proje Feature-Based Lightweight Clean Architecture yapısıyla kurgulanmıştır. Ortak altyapı Core modülünde, 5 ana ekran özelliği Features modülünde yer alır. Gereksiz soyutlama yapılmadan Presentation, Domain ve Data katmanları ayrılmıştır.">
+        <div class="slide-inner">
+          <div class="slide-header">
+            <div>
+              <div class="section-kicker">Bölüm 6 / 9 • Modüler Yapı</div>
+              <h2 class="slide-title">Yazılım Mimarisi</h2>
+            </div>
+          </div>
+
+          <div class="arch-visual-grid">
+            <!-- Sol: Core ve Features Modül Kutuları -->
+            <div class="card">
+              <div class="card-title">Modül Organizasyonu (`lib/`)</div>
+              <div style="font-size: 0.82rem; font-weight: 700; color: var(--primary); text-transform: uppercase; margin-top: 4px;">Core Modülü (Paylaşılan Altyapı)</div>
+              <div class="module-pill-grid">
+                <div class="module-pill">Theme &amp; Colors<span>AppTheme, AppColors</span></div>
+                <div class="module-pill">State &amp; Storage<span>NotifierScope, JSON/Web</span></div>
+                <div class="module-pill">Ortak Widget'lar<span>PairlyLogo, PairlyButton</span></div>
+                <div class="module-pill">Servisler<span>FeedbackService</span></div>
+              </div>
+
+              <div style="font-size: 0.82rem; font-weight: 700; color: var(--primary); text-transform: uppercase; margin-top: 8px;">Features Modülü (Özellik Bazlı)</div>
+              <div class="module-pill-grid">
+                <div class="module-pill">home &amp; difficulty<span>Ana Sayfa &amp; Seviye Seçimi</span></div>
+                <div class="module-pill">game &amp; result<span>Oyun Alanı &amp; Sonuç</span></div>
+                <div class="module-pill" style="grid-column: span 2;">statistics<span>Kişisel Rekorlar, Son 5 Oyun &amp; Kalıcı Kayıt</span></div>
+              </div>
+            </div>
+
+            <!-- Sağ: Presentation, Domain, Data Katman Şeması -->
+            <div class="layer-stack">
+              <div class="layer-box">
+                <div>
+                  <div class="section-kicker">Katman 1</div>
+                  <div style="font-weight: 800; font-size: 1.12rem;">Presentation</div>
+                  <div style="font-size: 0.88rem; color: var(--text-secondary);">
+                    Ekranlar, Widget'lar ve `ChangeNotifier` Controller sınıfları
+                  </div>
+                </div>
+                <span class="brand-tag">UI &amp; State</span>
+              </div>
+
+              <div class="layer-box">
+                <div>
+                  <div class="section-kicker">Katman 2</div>
+                  <div style="font-weight: 800; font-size: 1.12rem;">Domain</div>
+                  <div style="font-size: 0.88rem; color: var(--text-secondary);">
+                    Saf Dart modelleri (`GameDifficulty`, `MemoryCardItem`) ve `DeckGenerator`
+                  </div>
+                </div>
+                <span class="brand-tag">Oyun Kuralları</span>
+              </div>
+
+              <div class="layer-box">
+                <div>
+                  <div class="section-kicker">Katman 3</div>
+                  <div style="font-weight: 800; font-size: 1.12rem;">Data &amp; Core Storage</div>
+                  <div style="font-size: 0.88rem; color: var(--text-secondary);">
+                    `StatisticsRepository` ve platform uyumlu kalıcı JSON depolama
+                  </div>
+                </div>
+                <span class="brand-tag">Kalıcı Veri</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SLAYT 7: ARAYÜZ TASARIMI
+           ================================================================ -->
+      <section class="slide" data-index="6"
+        data-notes="Arayüz tasarımında Google Stitch referansları Material 3 bileşenlerine dönüştürülmüştür. Açık ve Koyu tema renk paleti merkezi AppColors sınıfından yönetilir ve LayoutBuilder ile her ekran boyutuna taşmadan uyum sağlar.">
+        <div class="slide-inner">
+          <div class="slide-header">
+            <div>
+              <div class="section-kicker">Bölüm 7 / 9 • Görsel Dil</div>
+              <h2 class="slide-title">Arayüz Tasarımı</h2>
+            </div>
+          </div>
+
+          <div class="design-layout">
+            <!-- Sol: Renk Paleti ve 3 Kısa Etiket -->
+            <div class="layer-stack">
+              <div class="card">
+                <div class="card-title">Light &amp; Dark Renk Paleti (`AppColors`)</div>
+                <div class="swatch-grid">
+                  <div class="swatch-box">
+                    <div class="swatch-color" style="background: #F7F7F5;"></div>
+                    <div class="swatch-meta"><strong>#F7F7F5</strong>Light Yüzey</div>
+                  </div>
+                  <div class="swatch-box">
+                    <div class="swatch-color" style="background: #5A6D5E;"></div>
+                    <div class="swatch-meta"><strong>#5A6D5E</strong>Ana Yeşil</div>
+                  </div>
+                  <div class="swatch-box">
+                    <div class="swatch-color" style="background: #252925;"></div>
+                    <div class="swatch-meta"><strong>#252925</strong>Metin</div>
+                  </div>
+                  <div class="swatch-box">
+                    <div class="swatch-color" style="background: #171D1A;"></div>
+                    <div class="swatch-meta"><strong>#171D1A</strong>Dark Yüzey</div>
+                  </div>
+                  <div class="swatch-box">
+                    <div class="swatch-color" style="background: #A5BBA6;"></div>
+                    <div class="swatch-meta"><strong>#A5BBA6</strong>Dark Vurgu</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="chip-row">
+                <span class="tech-chip"><strong>Stitch</strong> Tasarım Referansı</span>
+                <span class="tech-chip"><strong>Material 3</strong> Tema Sistemi</span>
+                <span class="tech-chip"><strong>Responsive</strong> Dinamik Izgara</span>
+              </div>
+            </div>
+
+            <!-- Sağ: Büyütülmüş Light & Dark Ekran Görüntüleri -->
+            <div class="screens-showcase-3">
+              <div class="phone-frame">
+                <img src="assets/screenshots/flutter_app_game.png" alt="Light Mode Oyun Ekranı" />
+                <div class="frame-caption">
+                  <span class="badge-real">Light</span> Oyun Ekranı
+                </div>
+              </div>
+              <div class="phone-frame">
+                <img src="assets/screenshots/flutter_app_pause.png" alt="Duraklatma Modalı" />
+                <div class="frame-caption">
+                  <span class="badge-real">Light</span> Duraklatma
+                </div>
+              </div>
+              <div class="phone-frame">
+                <img src="assets/screenshots/game_dark_ref.png" alt="Dark Mode Oyun Ekranı" />
+                <div class="frame-caption">
+                  <span class="badge-stitch">Dark</span> Koyu Tema
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SLAYT 8: TESTLER
+           ================================================================ -->
+      <section class="slide" data-index="7"
+        data-notes="Proje güncel kodları üzerinde çalıştırılan flutter analyze testinden sıfır sorun ile, flutter test koşumundan ise 11'de 11 başarıyla geçmiştir.">
+        <div class="slide-inner">
+          <div class="slide-header">
+            <div>
+              <div class="section-kicker">Bölüm 8 / 9 • Doğrulama</div>
+              <h2 class="slide-title">Testler ve Kalite Kontrol</h2>
+            </div>
+          </div>
+
+          <!-- Büyük ve Okunabilir İki Ana Sonuç Kartı -->
+          <div class="grid-2">
+            <div class="kpi-banner">
+              <div>
+                <div class="kpi-label">Flutter Analyze</div>
+                <div style="font-size: 0.9rem; color: var(--text-secondary);">Statik Kod Analizi (`flutter_lints`)</div>
+              </div>
+              <div class="kpi-value">0 Sorun</div>
+            </div>
+
+            <div class="kpi-banner">
+              <div>
+                <div class="kpi-label">Flutter Test</div>
+                <div style="font-size: 0.9rem; color: var(--text-secondary);">7 Birim Testi + 4 Widget Testi</div>
+              </div>
+              <div class="kpi-value">11 / 11 Başarılı</div>
+            </div>
+          </div>
+
+          <!-- Test Edilen Alanlar (En Fazla 3 Kısa Madde) -->
+          <div class="grid-3">
+            <div class="card">
+              <div class="card-title">1. Oyun ve Deste Kuralları</div>
+              <p class="card-text">
+                5 zorluk matrisi, Fisher-Yates çift üretimi, doğru/yanlış eşleşme ve duraklatma kilidi doğrulandı.
+              </p>
+            </div>
+
+            <div class="card">
+              <div class="card-title">2. Arayüz ve Navigasyon</div>
+              <p class="card-text">
+                Ana sayfa, seviye seçici alt pencere, duraklatma modalı ve küçük ekranda taşmasız görünüm test edildi.
+              </p>
+            </div>
+
+            <div class="card">
+              <div class="card-title">3. Kalıcı Rekor Sistemi</div>
+              <p class="card-text">
+                Kişisel en iyi süre/hamle hesaplaması ve son 5 oyun geçmişi sınırlandırması doğrulandı.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           SLAYT 9: CANLI DEMO
+           ================================================================ -->
+      <section class="slide" data-index="8"
+        data-notes="Şimdi 4 adımlı canlı demomuza geçebiliriz. Uygulama penceresi paylaşılamazsa sağdaki interaktif ekran galerisi üzerinden tüm ekranları doğrudan inceleyebiliriz. Dinlediğiniz için teşekkür ederim.">
+        <div class="slide-inner">
+          <div class="slide-header">
+            <div>
+              <div class="section-kicker">Bölüm 9 / 9 • Uygulama Gösterimi</div>
+              <h2 class="slide-title">Canlı Demo</h2>
+            </div>
+          </div>
+
+          <div class="grid-2" style="align-items: stretch;">
+            <!-- Sol: 4 Aşamalı Kısa Demo Akışı -->
+            <div class="card" style="justify-content: space-between;">
+              <div class="card-title">4 Aşamalı Demo Akışı</div>
+              <div class="demo-steps-grid">
+                <div class="demo-step-card">
+                  <span class="demo-step-num">1</span>
+                  <strong style="font-size: 1.02rem;">Başlat</strong>
+                  <span style="font-size: 0.84rem; color: var(--text-secondary);">Tema seçimi ve 5 seviyeli zorluk penceresi</span>
+                </div>
+                <div class="demo-step-card">
+                  <span class="demo-step-num">2</span>
+                  <strong style="font-size: 1.02rem;">Eşleştir</strong>
+                  <span style="font-size: 0.84rem; color: var(--text-secondary);">3B kart dönüşü, sayaçlar ve duraklatma</span>
+                </div>
+                <div class="demo-step-card">
+                  <span class="demo-step-num">3</span>
+                  <strong style="font-size: 1.02rem;">Tamamla</strong>
+                  <span style="font-size: 0.84rem; color: var(--text-secondary);">Oyun sonu özeti ve yeni rekor rozeti</span>
+                </div>
+                <div class="demo-step-card">
+                  <span class="demo-step-num">4</span>
+                  <strong style="font-size: 1.02rem;">İstatistikleri İncele</strong>
+                  <span style="font-size: 0.84rem; color: var(--text-secondary);">Kişisel rekorlar ve son 5 oyun tablosu</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sağ: Yedek Ekran Görüntüsü Galerisi -->
+            <div class="card">
+              <div class="card-title">Ekran Görüntüsü Galerisi (Yedek Görünüm)</div>
+              <div class="demo-gallery-tabs" id="demoGalleryTabs">
+                <button class="gallery-tab active" type="button"
+                  data-img="assets/screenshots/flutter_app_game.png"
+                  data-badge="Gerçek Uygulama"
+                  data-title="Oyun Ekranı (4×4)"
+                  data-desc="Canlı süre, hamle, eşleşme sayacı ve eşleşen kartlar.">
+                  1. Oyun
+                </button>
+                <button class="gallery-tab" type="button"
+                  data-img="assets/screenshots/flutter_app_pause.png"
+                  data-badge="Gerçek Uygulama"
+                  data-title="Oyun Duraklatıldı"
+                  data-desc="Devam Et ve Ana Sayfaya Dön kontrolleri.">
+                  2. Duraklatma
+                </button>
+                <button class="gallery-tab" type="button"
+                  data-img="assets/screenshots/difficulty_dark_ref.png"
+                  data-badge="Tasarım Referansı"
+                  data-title="Zorluk Seçimi"
+                  data-desc="3×2'den 4×6'ya 5 kademeli zorluk seçici.">
+                  3. Zorluk
+                </button>
+                <button class="gallery-tab" type="button"
+                  data-img="assets/screenshots/statistics_dark_ref.png"
+                  data-badge="Tasarım Referansı"
+                  data-title="İstatistikler ve Rekorlar"
+                  data-desc="5 zorluk rekoru ve son 5 oyun geçmişi.">
+                  4. İstatistikler
+                </button>
+                <button class="gallery-tab" type="button"
+                  data-img="assets/screenshots/statistics_empty_light_ref.png"
+                  data-badge="Tasarım Referansı"
+                  data-title="Boş Durum Ekranı"
+                  data-desc="İlk oyun öncesi karşılama ekranı.">
+                  5. Boş Durum
+                </button>
+              </div>
+
+              <div class="demo-preview-stage">
+                <img id="demoPreviewImg" src="assets/screenshots/flutter_app_game.png" alt="Demo Önizleme Görseli" />
+                <div>
+                  <span class="badge-real" id="demoPreviewBadge">Gerçek Uygulama</span>
+                  <h3 id="demoPreviewTitle" style="font-size: 1.05rem; margin: 8px 0 6px;">Oyun Ekranı (4×4)</h3>
+                  <p id="demoPreviewDesc" class="card-text">
+                    Canlı süre, hamle, eşleşme sayacı ve eşleşen kartlar.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Konuşmacı Notları Çekmecesi -->
+    <aside class="speaker-notes-drawer" id="notesDrawer" aria-live="polite">
+      <div class="notes-header">
+        <span>Konuşmacı Notu (Kısa Hatırlatıcı)</span>
+        <span>Kapatmak için 'N' tuşuna basın</span>
+      </div>
+      <div class="notes-content" id="notesText"></div>
+    </aside>
+
+    <!-- Alt Navigasyon ve Slayt Sayacı -->
+    <footer class="deck-footer">
+      <div class="footer-hint">
+        Geçiş: <span class="kbd">←</span> <span class="kbd">→</span> veya <span class="kbd">1-9</span> •
+        Tam Ekran: <span class="kbd">F</span> •
+        Tema: <span class="kbd">T</span> •
+        Notlar: <span class="kbd">N</span>
+      </div>
+
+      <div class="nav-controls">
+        <button class="nav-btn" id="btnPrev" type="button">← Önceki</button>
+        <div class="slide-counter" id="slideCounter">1 / 9</div>
+        <button class="nav-btn" id="btnNext" type="button">Sonraki →</button>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/presentation.js"></script>
+</body>
+</html>

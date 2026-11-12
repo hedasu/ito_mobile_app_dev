@@ -1,0 +1,1065 @@
+/* ==========================================================================
+   Pairly — Üniversite Bireysel Proje Sunumu Stilleri
+   Görsel Ağırlıklı, 100% Çevrimdışı, 16:9 Projeksiyon Uyumlu, Light & Dark Tema
+   ========================================================================== */
+
+:root {
+  /* Pairly Light Mode Renk Tokenları (AppColors) */
+  --bg-canvas: #F7F7F5;
+  --bg-surface: #FFFFFF;
+  --bg-surface-variant: #F2F5EE;
+  --bg-code: #181E1A;
+  --primary: #5A6D5E;
+  --primary-soft: rgba(90, 109, 94, 0.12);
+  --secondary: #8A9A86;
+  --text-primary: #252925;
+  --text-secondary: #6B726A;
+  --border-color: #E6E6E2;
+  --shadow-soft: 0 12px 32px rgba(37, 41, 37, 0.06);
+  --shadow-card: 0 4px 14px rgba(37, 41, 37, 0.04);
+  --badge-bg: #ECEFE8;
+  --success: #3E7B48;
+}
+
+body.dark-mode {
+  /* Pairly Dark Mode Renk Tokenları (AppColors) */
+  --bg-canvas: #171D1A;
+  --bg-surface: #252E28;
+  --bg-surface-variant: #1B211E;
+  --bg-code: #0E1310;
+  --primary: #A5BBA6;
+  --primary-soft: rgba(165, 187, 166, 0.14);
+  --secondary: #8E9B90;
+  --text-primary: #F1F4EF;
+  --text-secondary: #8E9B90;
+  --border-color: #3B483F;
+  --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.45);
+  --shadow-card: 0 6px 18px rgba(0, 0, 0, 0.28);
+  --badge-bg: #1E2621;
+  --success: #8AC997;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Ana Sunum Kabuğu (16:9 Projeksiyon Düzeni) */
+.presentation-shell {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  max-width: 1920px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Üst İlerleme Çubuğu */
+.top-progress-track {
+  width: 100%;
+  height: 4px;
+  background: var(--border-color);
+  flex-shrink: 0;
+  z-index: 30;
+}
+
+.top-progress-bar {
+  height: 100%;
+  width: 11.11%;
+  background: var(--primary);
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Üst Navigasyon Barı */
+.deck-topbar {
+  height: 58px;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  flex-shrink: 0;
+  z-index: 25;
+}
+
+.brand-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+}
+
+.brand-pill img {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: #ffffff;
+  object-fit: contain;
+}
+
+.brand-tag {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--primary);
+  background: var(--primary-soft);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+/* Bölüm Sekmeleri */
+.chapter-dots {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.chapter-btn {
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chapter-btn:hover {
+  background: var(--bg-surface-variant);
+  color: var(--text-primary);
+}
+
+.chapter-btn.active {
+  background: var(--primary);
+  color: var(--bg-canvas);
+}
+
+/* Sağ Üst Araçlar */
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface-variant);
+  color: var(--text-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.icon-btn:hover {
+  border-color: var(--primary);
+}
+
+.icon-btn.active-toggle {
+  background: var(--primary-soft);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Slayt Sahnesi */
+.slides-viewport {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  padding: 22px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px) scale(0.994);
+  transition: opacity 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+              visibility 0.34s;
+  overflow: hidden;
+}
+
+.slide.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  z-index: 10;
+}
+
+.slide-inner {
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Slayt Başlık Alanı */
+.slide-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+}
+
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+  margin-bottom: 3px;
+}
+
+.slide-title {
+  font-size: clamp(1.65rem, 2.4vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  line-height: 1.15;
+}
+
+/* Izgara ve Kart Düzenleri */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  align-items: stretch;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  align-items: stretch;
+}
+
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 22px;
+  padding: 22px 24px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-highlight {
+  border: 2px solid var(--primary);
+  background: linear-gradient(145deg, var(--bg-surface), var(--bg-surface-variant));
+}
+
+.card-title {
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   SLAYT 1: GİRİŞ
+   ========================================================================== */
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.hero-brand-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  padding: 12px 20px;
+  border-radius: 22px;
+  box-shadow: var(--shadow-card);
+  margin-bottom: 20px;
+}
+
+.hero-brand-row img {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+}
+
+.hero-main-title {
+  font-size: clamp(2.5rem, 4vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 18px;
+}
+
+.hero-lead {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tech-chip {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-color);
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  box-shadow: var(--shadow-card);
+}
+
+.tech-chip strong {
+  color: var(--primary);
+}
+
+/* Telefon Çerçevesi */
+.phone-frame {
+  background: var(--bg-surface);
+  border: 2px solid var(--border-color);
+  border-radius: 28px;
+  padding: 10px;
+  box-shadow: var(--shadow-soft);
+  max-width: 265px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.phone-frame img {
+  width: 100%;
+  height: auto;
+  max-height: 430px;
+  object-fit: contain;
+  border-radius: 18px;
+  display: block;
+}
+
+.frame-caption {
+  margin-top: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.badge-real {
+  display: inline-block;
+  background: var(--primary);
+  color: var(--bg-canvas);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 9px;
+  border-radius: 999px;
+  margin-right: 4px;
+}
+
+.badge-stitch {
+  display: inline-block;
+  background: var(--bg-surface-variant);
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 9px;
+  border-radius: 999px;
+  margin-right: 4px;
+}
+
+/* ==========================================================================
+   SLAYT 2: PROJE AMACI (3 Sade Hedef Kartı)
+   ========================================================================== */
+.goal-card {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-color);
+  border-radius: 26px;
+  padding: 36px 28px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+
+.goal-card.card-highlight {
+  border: 2px solid var(--primary);
+  background: linear-gradient(160deg, var(--bg-surface), var(--bg-surface-variant));
+}
+
+.goal-icon-circle {
+  width: 72px;
+  height: 72px;
+  border-radius: 22px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.goal-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.goal-sentence {
+  font-size: 1.04rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  max-width: 340px;
+}
+
+/* ==========================================================================
+   SLAYT 3: KULLANICI DENEYİMİ (Yatay Görsel Akış + 5 Seviye Şeridi)
+   ========================================================================== */
+.ux-flow-strip {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr auto 1fr;
+  gap: 8px;
+  align-items: center;
+}
+
+.ux-flow-node {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-color);
+  border-radius: 20px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--shadow-card);
+  text-align: center;
+}
+
+.ux-flow-node.highlight-node {
+  border: 2px solid var(--primary);
+  background: var(--bg-surface-variant);
+}
+
+.ux-screen-thumb {
+  width: 100%;
+  height: 225px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background: var(--bg-canvas);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ux-screen-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ux-mock-screen {
+  width: 100%;
+  height: 100%;
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--bg-canvas);
+}
+
+.ux-step-label {
+  font-size: 0.96rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.ux-step-sub {
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+}
+
+.ux-flow-arrow {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--primary);
+  user-select: none;
+}
+
+.matrix-strip {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.matrix-pill {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-color);
+  border-radius: 16px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.matrix-pill.active-level {
+  border: 2px solid var(--primary);
+  background: var(--primary-soft);
+}
+
+.matrix-badge {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+/* ==========================================================================
+   SLAYT 4: OYUN ALGORİTMASI (Görsel Kart Animasyonu + Kısa Gerçek Kodlar)
+   ========================================================================== */
+.algo-anim-bar {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-color);
+  border-radius: 20px;
+  padding: 14px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  box-shadow: var(--shadow-card);
+}
+
+.algo-stage-steps {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.algo-step-box {
+  flex: 1;
+  background: var(--bg-surface-variant);
+  border: 1.5px solid var(--border-color);
+  border-radius: 14px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.25s ease;
+}
+
+.algo-step-box.active-step {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+  transform: translateY(-2px);
+}
+
+.mini-card-pair {
+  display: flex;
+  gap: 6px;
+}
+
+.mini-card {
+  width: 38px;
+  height: 46px;
+  border-radius: 9px;
+  border: 1.5px solid var(--primary);
+  background: var(--bg-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--primary);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+  animation: cardPulse 2.8s infinite ease-in-out;
+}
+
+.mini-card.matched {
+  background: var(--primary-soft);
+  border-color: var(--success);
+}
+
+@keyframes cardPulse {
+  0%, 100% { transform: rotateY(0deg); }
+  50% { transform: rotateY(14deg) scale(1.04); }
+}
+
+.code-window {
+  background: var(--bg-code);
+  color: #E6EDF3;
+  border-radius: 18px;
+  border: 1px solid #2D3832;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card);
+}
+
+.code-header {
+  background: #222B26;
+  padding: 9px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #2D3832;
+  font-size: 0.82rem;
+  color: #A5BBA6;
+  font-family: Consolas, 'JetBrains Mono', monospace;
+}
+
+.window-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.window-dots span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #4A5A50;
+}
+
+.code-body {
+  padding: 16px 20px;
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 0.94rem;
+  line-height: 1.55;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.kw { color: #8AC997; font-weight: 600; }
+.fn { color: #D2A8FF; }
+.tp { color: #79C0FF; }
+.cm { color: #7D8B81; font-style: italic; }
+.st { color: #A5D6FF; }
+.nm { color: #FFA657; }
+
+/* ==========================================================================
+   SLAYT 5: STATE MANAGEMENT (Görsel Akış Şeması + 4 Satır Kod)
+   ========================================================================== */
+.state-flow-diagram {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+.state-node {
+  background: var(--bg-surface);
+  border: 2px solid var(--border-color);
+  border-radius: 22px;
+  padding: 24px 20px;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.state-node.state-node-active {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.state-node-tag {
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--primary);
+}
+
+.state-node-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  font-family: Consolas, monospace;
+}
+
+.state-node-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   SLAYT 6: YAZILIM MİMARİSİ (Görsel Modül & Katman Kutuları)
+   ========================================================================== */
+.arch-visual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.module-pill-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.module-pill {
+  background: var(--bg-surface-variant);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.module-pill span {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.layer-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-content: center;
+}
+
+.layer-box {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-color);
+  border-left: 6px solid var(--primary);
+  border-radius: 18px;
+  padding: 18px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-card);
+}
+
+/* ==========================================================================
+   SLAYT 7: ARAYÜZ TASARIMI (Büyük Görseller + Renk Paleti + 3 Etiket)
+   ========================================================================== */
+.design-layout {
+  display: grid;
+  grid-template-columns: 0.95fr 1.25fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.swatch-box {
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--bg-surface);
+}
+
+.swatch-color {
+  height: 52px;
+  width: 100%;
+}
+
+.swatch-meta {
+  padding: 7px 8px;
+  font-size: 0.75rem;
+}
+
+.swatch-meta strong {
+  display: block;
+  font-family: Consolas, monospace;
+}
+
+.screens-showcase-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: center;
+}
+
+.screens-showcase-3 .phone-frame {
+  max-width: 245px;
+}
+
+.screens-showcase-3 .phone-frame img {
+  max-height: 390px;
+}
+
+/* ==========================================================================
+   SLAYT 8: TESTLER (Büyük Metrikler + 3 Kısa Madde)
+   ========================================================================== */
+.kpi-banner {
+  background: var(--bg-surface);
+  border: 2px solid var(--primary);
+  border-radius: 24px;
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-card);
+}
+
+.kpi-value {
+  font-size: clamp(2.2rem, 3.2vw, 3rem);
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.1;
+}
+
+.kpi-label {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+/* ==========================================================================
+   SLAYT 9: CANLI DEMO (4 Aşamalı Akış + Yedek Görsel Galerisi)
+   ========================================================================== */
+.demo-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.demo-step-card {
+  background: var(--bg-surface-variant);
+  border: 1.5px solid var(--border-color);
+  border-radius: 18px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.demo-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: var(--primary);
+  color: var(--bg-canvas);
+  font-weight: 800;
+  font-size: 0.88rem;
+}
+
+.demo-gallery-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.gallery-tab {
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface-variant);
+  color: var(--text-primary);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.gallery-tab.active {
+  background: var(--primary);
+  color: var(--bg-canvas);
+  border-color: var(--primary);
+}
+
+.demo-preview-stage {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 20px;
+  align-items: center;
+  background: var(--bg-surface-variant);
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: 14px;
+}
+
+.demo-preview-stage img {
+  width: 100%;
+  max-height: 330px;
+  object-fit: contain;
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface);
+}
+
+/* Konuşmacı Notları Çekmecesi */
+.speaker-notes-drawer {
+  position: fixed;
+  left: 32px;
+  right: 32px;
+  bottom: 64px;
+  background: var(--bg-surface);
+  border: 2px solid var(--primary);
+  border-radius: 18px;
+  padding: 16px 22px;
+  box-shadow: var(--shadow-soft);
+  z-index: 40;
+  transform: translateY(130%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.speaker-notes-drawer.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.notes-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.notes-content {
+  font-size: 0.94rem;
+  color: var(--text-primary);
+}
+
+/* Alt Navigasyon ve Sayaç Barı */
+.deck-footer {
+  height: 52px;
+  padding: 0 32px;
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  z-index: 25;
+}
+
+.footer-hint {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.kbd {
+  display: inline-block;
+  padding: 1px 6px;
+  font-family: Consolas, monospace;
+  font-size: 0.72rem;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface-variant);
+  color: var(--text-primary);
+}
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-btn {
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface-variant);
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.nav-btn:hover:not(:disabled) {
+  background: var(--primary);
+  color: var(--bg-canvas);
+  border-color: var(--primary);
+}
+
+.nav-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.slide-counter {
+  font-size: 0.88rem;
+  font-weight: 700;
+  min-width: 90px;
+  text-align: center;
+}
+
+@media (max-width: 1100px) {
+  .chapter-dots {
+    display: none;
+  }
+}

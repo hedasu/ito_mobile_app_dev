@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pairly - İstatistikler</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-container": "#d9eedb",
+            "surface-container-high": "#e6e9e3",
+            "on-secondary-fixed": "#111f11",
+            "surface-container-low": "#f2f5ee",
+            "outline-variant": "#c3c8c1",
+            "error": "#ba1a1a",
+            "surface-container-highest": "#e0e3dd",
+            "primary-fixed": "#d3e8d5",
+            "tertiary-fixed": "#ffd9dc",
+            "primary-container": "#5a6d5e",
+            "background": "#f7faf4",
+            "on-tertiary-fixed-variant": "#5a4043",
+            "on-tertiary-fixed": "#2b1618",
+            "surface-container": "#ecefe8",
+            "primary-fixed-dim": "#b7ccba",
+            "on-secondary-fixed-variant": "#3c4b3a",
+            "on-tertiary-container": "#ffe2e4",
+            "primary": "#425547",
+            "on-secondary": "#ffffff",
+            "on-primary-fixed-variant": "#394b3d",
+            "inverse-on-surface": "#eff2eb",
+            "secondary-fixed-dim": "#bbcbb6",
+            "secondary-fixed": "#d7e7d1",
+            "surface-bright": "#f7faf4",
+            "secondary-container": "#d4e4ce",
+            "surface": "#f7faf4",
+            "on-background": "#191d19",
+            "surface-tint": "#506354",
+            "on-error": "#ffffff",
+            "on-surface": "#191d19",
+            "error-container": "#ffdad6",
+            "on-primary": "#ffffff",
+            "tertiary": "#65494c",
+            "on-surface-variant": "#434843",
+            "surface-variant": "#e0e3dd",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "on-secondary-container": "#586755",
+            "on-error-container": "#93000a",
+            "tertiary-fixed-dim": "#e3bdc1",
+            "on-primary-fixed": "#0e1f14",
+            "inverse-surface": "#2d312d",
+            "secondary": "#536251",
+            "surface-dim": "#d8dbd5",
+            "tertiary-container": "#7f6164",
+            "inverse-primary": "#b7ccba",
+            "outline": "#737873"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2rem",
+            "space-lg": "1.5rem",
+            "space-sm": "0.5rem",
+            "margin": "1.5rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "headline-sm": ["Manrope"],
+            "label-lg": ["DM Sans"],
+            "body-lg": ["DM Sans"],
+            "headline-md": ["Manrope"],
+            "body-md": ["DM Sans"],
+            "headline-lg": ["Manrope"],
+            "display": ["Manrope"],
+            "label-sm": ["DM Sans"],
+            "label-md": ["DM Sans"],
+            "body-sm": ["DM Sans"]
+          },
+          "fontSize": {
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-lg": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "display": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased flex justify-center items-center min-h-screen select-none m-0 p-0 font-body-md">
+<!-- Mobile Viewport: 390px x 844px -->
+<main class="w-[390px] h-[844px] bg-background relative flex flex-col justify-between overflow-hidden shadow-2xl">
+<!-- Top Bar & System Header -->
+<header class="w-full shrink-0 z-20">
+<!-- iOS Status Bar -->
+<div class="h-11 px-7 flex items-center justify-between text-on-surface">
+<span class="font-headline-sm text-body-sm font-semibold tracking-tight">09:41</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[17px] leading-none text-on-surface" data-icon="signal_cellular_alt">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[17px] leading-none text-on-surface" data-icon="wifi">wifi</span>
+<span class="material-symbols-outlined text-[20px] leading-none text-on-surface" data-icon="battery_full">battery_full</span>
+</div>
+</div>
+<!-- Navigation Header -->
+<nav class="h-14 px-margin flex items-center justify-between relative">
+<button aria-label="Geri Dön" class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm font-semibold text-on-surface absolute left-1/2 -translate-x-1/2">
+          İstatistikler
+        </h1>
+<!-- Balanced spacer -->
+<div aria-hidden="true" class="w-10 h-10"></div>
+</nav>
+</header>
+<!-- Empty State Content Canvas -->
+<section class="flex-1 px-margin flex flex-col items-center justify-center -mt-6">
+<!-- Minimalist Card Illustration -->
+<div aria-hidden="true" class="relative w-44 h-40 flex items-center justify-center">
+<!-- Back Card (Tilted left) -->
+<div class="absolute w-24 h-32 rounded-2xl bg-surface-container-lowest border border-outline-variant/40 shadow-[0_4px_16px_rgba(37,41,37,0.04)] -rotate-12 -translate-x-4 translate-y-1 flex flex-col items-center justify-center">
+<!-- Subtle Botanical / Seed Motif -->
+<svg class="w-7 h-7 text-outline-variant/60" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24">
+<path d="M12 22V12m0 0C12 7 7 4 2 4c0 6 3 11 10 11m0-3c0-4 4-7 10-7 0 6-4 10-10 10"></path>
+</svg>
+</div>
+<!-- Front Card (Tilted right & elevated) -->
+<div class="absolute w-24 h-32 rounded-2xl bg-surface-container-lowest border border-outline-variant/60 shadow-[0_12px_24px_rgba(37,41,37,0.06)] rotate-6 translate-x-3 -translate-y-1 flex flex-col items-center justify-center">
+<div class="w-10 h-10 rounded-full bg-secondary-container/30 flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-primary text-[22px]" data-icon="psychology_alt">psychology_alt</span>
+</div>
+<!-- Tactile Dots Accent -->
+<div class="flex gap-1 mt-1">
+<span class="w-1 h-1 rounded-full bg-outline-variant/60"></span>
+<span class="w-1 h-1 rounded-full bg-outline-variant/60"></span>
+<span class="w-1 h-1 rounded-full bg-outline-variant/60"></span>
+</div>
+</div>
+</div>
+<!-- Typography Block -->
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface text-center mt-7 mb-2 tracking-tight">
+        Henüz oyun kaydın yok
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant text-center max-w-[270px] leading-relaxed mx-auto mb-9">
+        İlk oyununu tamamladığında istatistiklerin burada görünecek.
+      </p>
+<!-- Primary Action CTA -->
+<a class="w-full max-w-[270px] py-4 bg-primary-container text-on-secondary rounded-2xl font-headline-sm text-body-lg font-semibold text-center shadow-sm hover:brightness-105 active:scale-95 transition-all duration-150 flex items-center justify-center gap-2" href="#" role="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="play_arrow" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span>Oyuna Başla</span>
+</a>
+</section>
+<!-- Ergonomic Home Indicator Buffer -->
+<footer class="w-full h-8 flex justify-center items-end pb-2 shrink-0">
+<div aria-hidden="true" class="w-32 h-1 bg-on-surface/20 rounded-full"></div>
+</footer>
+</main>
+</body></html>

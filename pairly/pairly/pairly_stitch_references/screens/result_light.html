@@ -1,0 +1,212 @@
+<!DOCTYPE html><html class="h-full" lang="tr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Pairly - Oyun Sonucu</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-on-surface": "#eff2eb",
+            "tertiary-fixed": "#ffd9dc",
+            "on-surface": "#191d19",
+            "on-tertiary-fixed-variant": "#5a4043",
+            "primary-container": "#5a6d5e",
+            "on-background": "#191d19",
+            "on-secondary-container": "#586755",
+            "surface": "#f7faf4",
+            "on-surface-variant": "#434843",
+            "on-primary-fixed-variant": "#394b3d",
+            "primary": "#425547",
+            "primary-fixed": "#d3e8d5",
+            "secondary-fixed": "#d7e7d1",
+            "secondary-container": "#d4e4ce",
+            "surface-dim": "#d8dbd5",
+            "surface-container": "#ecefe8",
+            "error": "#ba1a1a",
+            "primary-fixed-dim": "#b7ccba",
+            "tertiary": "#65494c",
+            "inverse-surface": "#2d312d",
+            "on-secondary-fixed": "#111f11",
+            "on-secondary": "#ffffff",
+            "on-tertiary-fixed": "#2b1618",
+            "secondary": "#536251",
+            "on-error-container": "#93000a",
+            "secondary-fixed-dim": "#bbcbb6",
+            "surface-container-high": "#e6e9e3",
+            "surface-container-highest": "#e0e3dd",
+            "on-primary-container": "#d9eedb",
+            "tertiary-container": "#7f6164",
+            "outline": "#737873",
+            "on-error": "#ffffff",
+            "on-secondary-fixed-variant": "#3c4b3a",
+            "inverse-primary": "#b7ccba",
+            "on-primary": "#ffffff",
+            "outline-variant": "#c3c8c1",
+            "tertiary-fixed-dim": "#e3bdc1",
+            "on-tertiary": "#ffffff",
+            "surface-container-low": "#f2f5ee",
+            "background": "#f7faf4",
+            "on-primary-fixed": "#0e1f14",
+            "on-tertiary-container": "#ffe2e4",
+            "surface-tint": "#506354",
+            "surface-bright": "#f7faf4",
+            "error-container": "#ffdad6",
+            "surface-variant": "#e0e3dd",
+            "surface-container-lowest": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem",
+            "gutter": "1rem",
+            "margin": "1.5rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "body-sm": ["DM Sans"],
+            "label-lg": ["DM Sans"],
+            "headline-md": ["Manrope"],
+            "headline-lg": ["Manrope"],
+            "label-sm": ["DM Sans"],
+            "body-md": ["DM Sans"],
+            "body-lg": ["DM Sans"],
+            "headline-sm": ["Manrope"],
+            "label-md": ["DM Sans"],
+            "display": ["Manrope"]
+          },
+          "fontSize": {
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "headline-lg": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "display": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex justify-center items-center selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Viewport Container (Target 390px x 844px) -->
+<main class="w-full max-w-[390px] min-h-screen bg-background flex flex-col justify-between px-margin py-6 relative overflow-hidden shadow-2xl md:min-h-[844px] md:my-6 md:rounded-[40px] md:border md:border-surface-container-highest">
+<!-- Top Bar: Task-focused Header (Suppressing global shell according to rules) -->
+<header class="flex justify-between items-center w-full h-12">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">Pairly</span>
+</div>
+
+</header>
+<!-- Core Content Container -->
+<section class="flex flex-col items-center flex-1 justify-center py-2">
+<!-- Central Minimal Illustration: Overlapping Serene Memory Cards with Botanical Line Art -->
+<div class="relative w-44 h-36 flex items-center justify-center mb-6">
+<!-- Ambient subtle tonal glow -->
+<div class="absolute w-36 h-36 rounded-full bg-secondary-container/30 blur-2xl pointer-events-none"></div>
+<!-- Left Backing Card -->
+<div class="absolute w-24 h-32 rounded-xl bg-surface-container-lowest border border-surface-container-highest shadow-[0_4px_16px_rgba(37,41,37,0.04)] -rotate-6 -translate-x-5 flex flex-col items-center justify-center p-3 transition-transform">
+<div class="w-full h-full border border-dashed border-outline-variant/40 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-outline-variant text-[28px]">spa</span>
+</div>
+</div>
+<!-- Right Foreground Matched Card -->
+<div class="absolute w-24 h-32 rounded-xl bg-surface-container-lowest border border-primary-container/40 shadow-[0_8px_24px_rgba(37,41,37,0.07)] rotate-6 translate-x-5 flex flex-col items-center justify-center p-3">
+<div class="w-full h-full bg-primary-fixed/20 border border-primary-container/30 rounded-lg flex flex-col items-center justify-center gap-1">
+<span class="material-symbols-outlined text-primary text-[28px] fill-icon">potted_plant</span>
+<div class="w-1.5 h-1.5 rounded-full bg-primary-container mt-1"></div>
+</div>
+</div>
+</div>
+<!-- Title & Subtitle -->
+<div class="text-center space-y-1.5 mb-5">
+<h1 class="font-headline-lg text-headline-lg font-semibold tracking-tight text-on-surface">
+          Tebrikler!
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant font-normal">
+          Tur başarıyla tamamlandı.
+        </p>
+</div>
+<!-- Completed Difficulty Pill -->
+<div class="flex flex-wrap items-center justify-center gap-2 mb-6"><div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border border-surface-container-highest"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span><span class="font-label-sm text-label-sm text-on-surface-variant font-medium tracking-wide">Orta Seviye (4x4)</span></div><div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-fixed/20 border border-primary-container/30 text-primary"><span class="material-symbols-outlined text-[15px] fill-icon">stars</span><span class="font-label-sm text-label-sm font-semibold tracking-wide">Yeni En İyi Skor!</span></div></div>
+<!-- Performance Statistics Bento Card -->
+<div class="w-full bg-surface-container-lowest rounded-xl border border-surface-container-highest shadow-[0_2px_12px_rgba(37,41,37,0.03)] p-space-md space-y-4">
+<!-- Primary Metrics (3 Columns) -->
+<div class="grid grid-cols-3 divide-x divide-surface-container-high text-center py-1">
+<!-- Süre -->
+<div class="flex flex-col items-center px-1">
+<div class="flex items-center gap-1 text-on-surface-variant mb-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-label-sm text-label-sm text-outline uppercase font-medium">Süre</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">01:28</span>
+</div>
+<!-- Hamle -->
+<div class="flex flex-col items-center px-1">
+<div class="flex items-center gap-1 text-on-surface-variant mb-1">
+<span class="material-symbols-outlined text-[16px]">touch_app</span>
+<span class="font-label-sm text-label-sm text-outline uppercase font-medium">Hamle</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">18</span>
+</div>
+<!-- Eşleşme -->
+<div class="flex flex-col items-center px-1">
+<div class="flex items-center gap-1 text-on-surface-variant mb-1">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span class="font-label-sm text-label-sm text-outline uppercase font-medium">Eşleşme</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-primary font-semibold tracking-tight">8 / 8</span>
+</div>
+</div>
+<!-- Divider Line -->
+<div class="h-px w-full bg-surface-container"></div>
+<!-- Best Record Subtle Row -->
+<div class="flex items-center justify-between px-1.5 pt-0.5"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-[18px]">verified</span><span class="font-body-sm text-body-sm text-on-surface font-medium">Kişisel En İyi Derece</span></div><div class="flex items-center gap-1.5"><span class="font-label-md text-label-md font-semibold text-primary">01:28</span><span class="font-body-sm text-body-sm text-on-surface-variant">(18 Hamle)</span></div></div>
+</div>
+</section>
+<!-- Bottom Actions Container -->
+<footer class="w-full flex flex-col gap-3 pt-4 pb-2">
+<!-- Primary Action: Tekrar Oyna -->
+<button class="w-full h-12 bg-primary-container text-on-primary rounded-xl flex items-center justify-center gap-2 font-headline-sm text-[15px] font-medium shadow-[0_2px_8px_rgba(90,109,94,0.2)] hover:bg-primary transition-all duration-150 active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-[20px]">refresh</span>
+<span>Tekrar Oyna</span>
+</button>
+<!-- Secondary Action: Ana Sayfa -->
+<button class="w-full h-12 bg-surface-container-lowest text-on-surface border border-surface-container-highest rounded-xl flex items-center justify-center gap-2 font-headline-sm text-[15px] font-medium hover:bg-surface-container-low transition-all duration-150 active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">home</span>
+<span>Ana Sayfa</span>
+</button>
+</footer>
+</main>
+
+
+</body></html>
